@@ -6,4 +6,5 @@ const Button = ({ color, width, children, onClick }) => (
   </S.Button>
 );
 
+
 export default Button;
