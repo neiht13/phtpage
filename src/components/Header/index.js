@@ -1,18 +1,25 @@
-import { useState, Fragment, lazy } from "react";
+import {useState, Fragment, lazy, useEffect} from "react";
 import { Row, Col, Drawer } from "antd";
 import { CSSTransition } from "react-transition-group";
 import { withTranslation } from "react-i18next";
 
-import * as S from "./styles";
+import * as CSS from "./styles";
+import axios from "axios";
 
-const SvgIcon = lazy(() => import("../../common/SvgIcon"));
+const Images = lazy(() => import("../../common/Images"));
 const Button = lazy(() => import("../../common/Button"));
 
 const Header = ({ t }) => {
   const [isNavVisible] = useState(false);
   const [isSmallScreen] = useState(false);
   const [visible, setVisibility] = useState(false);
+  const [menuBar, setMenuBar] = useState([]);
 
+  useEffect(() => {
+    axios.get('http://localhost:5000/menu_bar').then(res =>{
+      setMenuBar(res.data)
+    })
+  },[]);
   const showDrawer = () => {
     setVisibility(!visible);
   };
@@ -31,40 +38,40 @@ const Header = ({ t }) => {
     };
     return (
       <Fragment>
-        <S.CustomNavLinkSmall onClick={() => scrollTo("about")}>
-          <S.Span>{t("About")}</S.Span>
-        </S.CustomNavLinkSmall>
-        <S.CustomNavLinkSmall onClick={() => scrollTo("mission")}>
-          <S.Span>{t("Mission")}</S.Span>
-        </S.CustomNavLinkSmall>
-        <S.CustomNavLinkSmall onClick={() => scrollTo("product")}>
-          <S.Span>{t("Product")}</S.Span>
-        </S.CustomNavLinkSmall>
-        <S.CustomNavLinkSmall
+        <CSS.CustomNavLinkSmall onClick={() => scrollTo(menuBar[0] && menuBar[0].id)}>
+          <CSS.Span>{t(menuBar[0] && menuBar[0].name)}</CSS.Span>
+        </CSS.CustomNavLinkSmall>
+        <CSS.CustomNavLinkSmall onClick={() => scrollTo("mission")}>
+          <CSS.Span>{t("Mission")}</CSS.Span>
+        </CSS.CustomNavLinkSmall>
+        <CSS.CustomNavLinkSmall onClick={() => scrollTo("product")}>
+          <CSS.Span>{t("Product")}</CSS.Span>
+        </CSS.CustomNavLinkSmall>
+        <CSS.CustomNavLinkSmall
           style={{ width: "180px" }}
           onClick={() => scrollTo("contact")}
         >
-          <S.Span>
+          <CSS.Span>
             <Button>{t("Contact")}</Button>
-          </S.Span>
-        </S.CustomNavLinkSmall>
+          </CSS.Span>
+        </CSS.CustomNavLinkSmall>
       </Fragment>
     );
   };
 
   return (
-    <S.Header>
-      <S.Container>
+    <CSS.Header>
+      <CSS.Container>
         <Row type="flex" justify="space-between" gutter={20}>
-          <S.LogoContainer to="/" aria-label="homepage">
-            <SvgIcon src="logo.svg" />
-          </S.LogoContainer>
-          <S.NotHidden>
+          <CSS.LogoContainer to="/" aria-label="homepage">
+            <Images src="logo_vnpt.png" width="100px" height="100px" />
+          </CSS.LogoContainer>
+          <CSS.NotHidden>
             <MenuItem />
-          </S.NotHidden>
-          <S.Burger onClick={showDrawer}>
-            <S.Outline />
-          </S.Burger>
+          </CSS.NotHidden>
+          <CSS.Burger onClick={showDrawer}>
+            <CSS.Outline />
+          </CSS.Burger>
         </Row>
         <CSSTransition
           in={!isSmallScreen || isNavVisible}
@@ -74,20 +81,20 @@ const Header = ({ t }) => {
         >
           <Drawer closable={false} visible={visible} onClose={onClose}>
             <Col style={{ marginBottom: "2.5rem" }}>
-              <S.Label onClick={onClose}>
+              <CSS.Label onClick={onClose}>
                 <Col span={12}>
-                  <S.Menu>Menu</S.Menu>
+                  <CSS.Menu>Menu</CSS.Menu>
                 </Col>
                 <Col span={12}>
-                  <S.Outline padding="true" />
+                  <CSS.Outline padding="true" />
                 </Col>
-              </S.Label>
+              </CSS.Label>
             </Col>
             <MenuItem />
           </Drawer>
         </CSSTransition>
-      </S.Container>
-    </S.Header>
+      </CSS.Container>
+    </CSS.Header>
   );
 };
 

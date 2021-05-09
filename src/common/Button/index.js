@@ -1,9 +1,9 @@
-import * as S from "./styles";
+import * as CSS from "./styles";
 
-const Button = ({ color, width, children, onClick }) => (
-  <S.Button color={color} width={width} onClick={onClick}>
+const Button = ({ id, color, width, size, children, onClick }) => (
+  <CSS.Button id={id} color={color} width={width} size={size} onClick={onClick}>
     {children}
-  </S.Button>
+  </CSS.Button>
 );
 
 export default Button;

@@ -14,6 +14,13 @@ export const Content = styled.p`
   margin: 1.5rem 0 2rem 0;
 `;
 
+export const BackgroundImage = styled.div`
+  background-image: url('./../../../../public/img/images/background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+`;
+
 export const ContentWrapper = styled.div`
   position: relative;
   max-width: 540px;

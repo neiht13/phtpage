@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
+const primaryColor = "#005aaa";
 const Styles = createGlobalStyle`
-
     body,
     html,
     a {
-        font-family: 'Ubuntu', sans-serif;
+        font-family: 'Segoe UI', sans-serif;
     }
 
 
@@ -28,8 +28,8 @@ const Styles = createGlobalStyle`
     h4,
     h5,
     h6 {
-        font-family: 'Ubuntu', sans-serif;
-        color: #0a1f44;
+        font-family: 'Segoe UI', sans-serif;
+        color: #005aaa;
         font-size: 2.575rem;
         line-height: 3.0625rem;
       
@@ -39,7 +39,7 @@ const Styles = createGlobalStyle`
     }
 
     p {
-        color: #343D48;
+        color: #0a1f44;
         font-size: 1.125rem;
     }
 
@@ -50,11 +50,15 @@ const Styles = createGlobalStyle`
     a {
         text-decoration: none;
         outline: none;
-        color: #2E186A;
+        color: #005aaa;
 
         :hover {
-            color: #2e186a;
+            color: #005aaa;
         }
+    }
+    i {
+        color: #005aaa;
+        font-size: 18px;
     }
     
     *:focus {
@@ -77,6 +81,24 @@ const Styles = createGlobalStyle`
     .anticon,
     .ant-notification-notice-icon-success {
         color: rgb(255,130,92);
+    }
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: #005aaa;
+    }
+    .ant-pagination-item-active {
+      border-color: #005aaa;
+      :hover {
+        border-color: #005aaa;
+      }
+      a {
+        color: ${primaryColor};
+        :hover {
+          color: ${primaryColor};
+        }
+      }
+    }
+    .anticon {
+      color: ${primaryColor};
     }
 `;
 

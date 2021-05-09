@@ -9,7 +9,7 @@ export const Footer = styled.footer`
 export const Title = styled.h4`
   font-size: 16px;
   text-transform: uppercase;
-  color: #000;
+  color: #005aaa;
 
   @media screen and (max-width: 414px) {
     padding: 1.5rem 0;
@@ -66,10 +66,18 @@ export const Select = styled.div`
 `;
 
 export const Para = styled.div`
-  color: rgba(2, 7, 62, 0.8);
-  max-width: 340px;
-  font-size: 14px;
+  color: #fffff;
+  max-width: 300px;
+  font-size: 16px;
   width: 100%;
+`;
+
+export const Address = styled.a`
+  color: #fffff;
+  max-width: 200px;
+  font-size: 16px;
+  width: 100%;
+  href: ${(props) => (props.address ? 'https://www.google.com/maps/place/' +  props.address: '')};
 `;
 
 export const Large = styled(Link)`
@@ -142,7 +150,7 @@ export const Hidden = styled.div`
 export const Language = styled.h4`
   font-size: 16px;
   text-transform: uppercase;
-  color: #000;
+  color: #005aaa;
 
   @media screen and (max-width: 414px) {
     padding: 1.5rem 0;
@@ -152,7 +160,7 @@ export const Language = styled.h4`
 export const Label = styled.label`
   font-size: 16px;
   text-transform: uppercase;
-  color: #000;
+  color: #005aaa;
   display: block;
   margin-bottom: 2rem;
 
@@ -167,4 +175,14 @@ export const LangSelect = styled.select`
   border: none;
   font-size: 1rem;
   background: rgb(249, 250, 252);
+`;
+
+const SocialLink = ({ className, href, children }) => (
+  <a className={className} href={href} target='_blank'>
+    {children}
+  </a>
+);
+
+export const StyledLink = styled(SocialLink)`
+  font-size: 30px;
 `;

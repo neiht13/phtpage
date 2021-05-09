@@ -3,6 +3,9 @@ export default function validate(values) {
   if (!values.name) {
     errors.name = "Name is required";
   }
+  if (!values.phone) {
+    errors.phone = "Phone is required";
+  }
   if (!values.email) {
     errors.email = "Email address is required";
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {

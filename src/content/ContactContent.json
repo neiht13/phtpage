@@ -1,4 +1,4 @@
 {
-    "title": "Contact Form",
-    "text": "The following form demonstrates form validation in action. Contact form component reduces the amount of time it is being re-rendered by the user as it embraces uncontrolled form validation to reduce any unnecessary performance penalty."
+    "title": "Biểu mẫu liên hệ",
+    "text": "Biểu mẫu sau thể hiện xác thực biểu mẫu đang hoạt động. Thành phần biểu mẫu liên hệ giảm lượng thời gian nó được người dùng hiển thị lại vì nó bao gồm xác thực biểu mẫu không được kiểm soát để giảm bất kỳ hình phạt hiệu suất không cần thiết nào."
 }

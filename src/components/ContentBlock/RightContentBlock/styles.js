@@ -8,6 +8,12 @@ export const RightBlockContainer = styled.section`
     padding: 8rem 0 6rem;
   }
 `;
+export const BackgroundImage = styled.div`
+  background-image: ${(props) => `url(${props.url})`};
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+`;
 
 export const Content = styled.p`
   margin: 1.5rem 0 2rem 0;

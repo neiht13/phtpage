@@ -1,12 +1,12 @@
 {
-  "title": "Landing page template for developers & startups",
-  "text": "Beautifully designed templates using React.js, ant design and styled-components! Save weeks of time and build your landing page in minutes.",
+  "title": "Landing Page Template được thiết kế cho doanh nghiệp và công ty mới thành lập",
+  "text": "Landing Page Template được thiết kế cho doanh nghiệp và công ty mới thành lập",
   "button": [
     {
-      "title": "Explore"
+      "title": "Khám phá"
     },
     {
-      "title": "Learn More",
+      "title": "Tìm hiểu thêm",
       "color": "#fff"
     }
   ]

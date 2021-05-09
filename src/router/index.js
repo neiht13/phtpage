@@ -11,7 +11,8 @@ const Router = () => {
   return (
     <Suspense fallback={null}>
       <GlobalStyles />
-      <Header />
+      <Header id="header"/>
+      <div id="firstBlock"/>
       <Switch>
         {routes.map((routeItem) => {
           return (

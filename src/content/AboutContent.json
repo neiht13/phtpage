@@ -1,16 +1,16 @@
 {
-  "title": "Light, Fast & Responsive",
-  "text": "This template is ready to use, so you don't need to change anything at a component level, unless you want to customize the default styling.",
+  "title": "Nhẹ, Nhanh & Đáp ứng",
+  "text": "Mẫu này đã sẵn sàng để sử dụng, vì vậy bạn không cần phải thay đổi bất kỳ điều gì ở cấp thành phần, trừ khi bạn muốn tùy chỉnh kiểu mặc định.",
   "section": [
     {
-      "title": "Why Antd?",
-      "content": "Ant Design is a React UI library that has a lot of easy-to-use components for building elegant UI.",
-      "icon": "notes.svg"
+      "title": "Tại sao lại là Antd?",
+      "content": "Ant Design là một thư viện React UI có rất nhiều thành phần dễ sử dụng để xây dựng giao diện người dùng trang nhã.",
+      "icon": "Notes.svg"
     },
     {
-      "title": "Why styled-components?",
-      "content": "Styled Components gives you total control over your components.",
-      "icon": "notes.svg"
+      "title": "Tại sao lại tạo kiểu-thành phần?",
+      "content": "Các thành phần được tạo kiểu cho bạn toàn quyền kiểm soát các thành phần của mình.",
+      "icon": "Notes.svg"
     }
   ]
 }

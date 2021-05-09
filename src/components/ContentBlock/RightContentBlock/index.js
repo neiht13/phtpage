@@ -5,9 +5,9 @@ import Slide from "react-reveal/Slide";
 import SvgIcon from "../../../common/SvgIcon";
 import Button from "../../../common/Button";
 
-import * as S from "./styles";
+import * as CSS from "./styles";
 
-const RightBlock = ({ title, content, button, icon, t, id }) => {
+const RightBlock = ({ title, content, button, icon, t, id, background}) => {
   const scrollTo = (id) => {
     const element = document.getElementById(id);
     element.scrollIntoView({
@@ -15,14 +15,15 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
     });
   };
   return (
-    <S.RightBlockContainer>
+    <CSS.BackgroundImage url={background}>
+    <CSS.RightBlockContainer>
       <Row type="flex" justify="space-between" align="middle" id={id}>
-        <Col lg={11} md={11} sm={11} xs={24}>
+        <Col offset={1} lg={11} md={11} sm={11} xs={24}>
           <Slide left>
-            <S.ContentWrapper>
+            <CSS.ContentWrapper>
               <h6>{t(title)}</h6>
-              <S.Content>{t(content)}</S.Content>
-              <S.ButtonWrapper>
+              <CSS.Content>{t(content)}</CSS.Content>
+              <CSS.ButtonWrapper>
                 {button &&
                   typeof button === "object" &&
                   button.map((item, id) => {
@@ -37,11 +38,11 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
                       </Button>
                     );
                   })}
-              </S.ButtonWrapper>
-            </S.ContentWrapper>
+              </CSS.ButtonWrapper>
+            </CSS.ContentWrapper>
           </Slide>
         </Col>
-        <Col lg={11} md={11} sm={12} xs={24}>
+        <Col lg={11} md={11} sm={11} xs={24}>
           <Slide right>
             <SvgIcon
               src={icon}
@@ -52,7 +53,8 @@ const RightBlock = ({ title, content, button, icon, t, id }) => {
           </Slide>
         </Col>
       </Row>
-    </S.RightBlockContainer>
+    </CSS.RightBlockContainer>
+    </CSS.BackgroundImage>
   );
 };
 

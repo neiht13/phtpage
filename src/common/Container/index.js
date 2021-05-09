@@ -1,9 +1,9 @@
-import * as S from "./styles";
+import * as CSS from "./styles";
 
 const Container = ({ padding, border, children }) => (
-  <S.Container padding={padding} border={border}>
+  <CSS.Container padding={padding} border={border}>
     {children}
-  </S.Container>
+  </CSS.Container>
 );
 
 export default Container;

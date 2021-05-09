@@ -18,11 +18,7 @@ export const IconContainer = styled.div`
 
 export const FormGroup = styled.form`
   width: 100%;
-  max-width: 520px;
-  @media only screen and (max-width: 1045px) {
-    max-width: 100%;
-    margin-top: 2rem;
-  }
+  max-width: 1440px;
 `;
 
 export const Span = styled.span`
