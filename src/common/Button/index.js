@@ -6,4 +6,5 @@ const Button = ({ id, color, width, size, children, onClick }) => (
   </CSS.Button>
 );
 
+
 export default Button;
