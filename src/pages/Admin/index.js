@@ -2,6 +2,7 @@ import { lazy } from "react";
 
 import ContactContent from "../../content/ContactContent.json";
 import { Tabs } from 'antd';
+import {TabPanel, TabView} from "primereact/tabview";
 
 const { TabPane } = Tabs;
 
@@ -11,7 +12,8 @@ function callback(key) {
 
 const AdminPage = lazy(() => import("./Menu"));
 const ContactMessagePage = lazy(() => import("./Message"));
-const ContentBlockPage = lazy(() => import("./Block"));
+const FooterPage = lazy(() => import("./Footer"));
+const BlockContent = lazy(() => import("./BlockContent"));
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 
@@ -20,16 +22,30 @@ const Admin = () => {
     <Container>
       <ScrollToTop />
         <Tabs defaultActiveKey="1" onChange={callback} type="card">
-            <TabPane tab="Tab 1" key="1">
+            <TabPane tab="Header" key="1">
                 <AdminPage/>
             </TabPane>
-            <TabPane tab="Tab 2" key="2">
-                <ContentBlockPage/>
+            <TabPane tab="Footer" key="2">
+                <FooterPage/>
             </TabPane>
-            <TabPane tab="Tab 3" key="3">
+            <TabPane tab="Block" key="3">
+                <BlockContent/>
+            </TabPane>
+            <TabPane tab="Message" key="4">
                 <ContactMessagePage/>
             </TabPane>
         </Tabs>
+        <TabView>
+            <TabPanel header="Header I">
+                <AdminPage/>
+            </TabPanel>
+            <TabPanel header="Header II">
+                <FooterPage/>
+            </TabPanel>
+            <TabPanel header="Header III">
+                <ContactMessagePage/>
+            </TabPanel>
+        </TabView>
     </Container>
   );
 };

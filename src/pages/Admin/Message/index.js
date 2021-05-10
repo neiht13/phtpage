@@ -1,5 +1,5 @@
 import {lazy, useEffect, useState} from "react";
-import { Row, Col, Table } from "antd";
+import { Row, Col } from "antd";
 import Zoom from "react-reveal/Zoom";
 import { withTranslation } from "react-i18next";
 
@@ -7,6 +7,7 @@ import axios from "axios";
 import * as CSS from "./styles";
 import removeVietnamese from "../../../common/Utilities/ConvertViString";
 import useForm from "../../../common/Form/useForm";
+import TableX from "../../../common/Table";
 
 const Block = lazy(() => import("../../../components/Block"));
 const Input = lazy(() => import("../../../common/Input"));
@@ -75,7 +76,7 @@ const ContactMessage = ({ title, content, id, t }) => {
 
   return (
       <div>
-          <Table dataSource={messages} columns={columns} pagination={{ pageSize: 7 }}/>
+          <TableX dataSource={messages} columns={columns} />
       </div>
   );
 };

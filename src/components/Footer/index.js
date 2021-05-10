@@ -5,6 +5,7 @@ import { withTranslation } from "react-i18next";
 import Fade from "react-reveal/Fade";
 
 import * as CSS from "./styles";
+import CollapseX from "../../common/Collapse";
 
 const SvgIcon = lazy(() => import("../../common/SvgIcon"));
 const Images = lazy(() => import("../../common/Images"));
@@ -38,9 +39,7 @@ const Footer = ({ t }) => {
               </Col>
               <Col lg={8} md={8} sm={12} xs={24}>
                 <CSS.Title>{t("Policy")}</CSS.Title>
-                <CSS.Large to="/" left="true">
-                  {t("Application Security")}
-                </CSS.Large>
+                <CollapseX items= {[{subText: "Phan", subTextContent: "Phan Hiếu Thiện"}]}/>
                 <CSS.Large left="true" to="/">
                   {t("Software Principles")}
                 </CSS.Large>

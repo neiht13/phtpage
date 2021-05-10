@@ -94,7 +94,7 @@ const Contact = ({ title, content, id, t }) => {
   return (
       <div>
         {/*<Col lg={12} md={11} sm={24}>*/}
-        {/*  <Block padding={true} title={title} content={content} />*/}
+        {/*  <Footer padding={true} title={title} content={content} />*/}
         {/*</Col>*/}
           <CSS.Label>
             <CSS.FormGroup autoComplete="off" onSubmit={handleSubmit}>

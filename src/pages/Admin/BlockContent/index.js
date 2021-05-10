@@ -13,7 +13,7 @@ const Input = lazy(() => import("../../../common/Input"));
 const Button = lazy(() => import("../../../common/Button"));
 const TextArea = lazy(() => import("../../../common/TextArea"));
 
-const ContentBlock = ({ title, content, id, t }) => {
+const Contact = ({ title, content, id, t }) => {
   const { values, setValues, errors, handleChange, handleSubmit, shouldSubmit, setShouldSubmit, setUrlForm , isNew, setIsNew} = useForm();
   const [menuBar, setMenuBar] = useState(null);
   useEffect(() =>{
@@ -62,11 +62,6 @@ const ContentBlock = ({ title, content, id, t }) => {
 
   const columns = [
     {
-      title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
-    },
-    {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
@@ -94,7 +89,7 @@ const ContentBlock = ({ title, content, id, t }) => {
   return (
       <div>
         {/*<Col lg={12} md={11} sm={24}>*/}
-        {/*  <Block padding={true} title={title} content={content} />*/}
+        {/*  <Footer padding={true} title={title} content={content} />*/}
         {/*</Col>*/}
           <CSS.Label>
             <CSS.FormGroup autoComplete="off" onSubmit={handleSubmit}>
@@ -146,4 +141,4 @@ const ContentBlock = ({ title, content, id, t }) => {
   );
 };
 
-export default withTranslation()(ContentBlock);
+export default withTranslation()(Contact);

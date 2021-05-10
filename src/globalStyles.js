@@ -78,27 +78,15 @@ const Styles = createGlobalStyle`
         padding-right: 2rem;
     }
 
-    .anticon,
     .ant-notification-notice-icon-success {
         color: rgb(255,130,92);
     }
     .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
       color: #005aaa;
     }
-    .ant-pagination-item-active {
-      border-color: #005aaa;
-      :hover {
-        border-color: #005aaa;
-      }
-      a {
-        color: ${primaryColor};
-        :hover {
-          color: ${primaryColor};
-        }
-      }
-    }
+    
     .anticon {
-      color: ${primaryColor};
+      color: ${primaryColor}!important;
     }
 `;
 
