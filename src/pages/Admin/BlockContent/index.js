@@ -1,5 +1,5 @@
 import {lazy, useEffect, useState} from "react";
-import { Row, Col, Table } from "antd";
+import {Row, Col, Table, Select} from "antd";
 import Zoom from "react-reveal/Zoom";
 import { withTranslation } from "react-i18next";
 
@@ -7,6 +7,9 @@ import axios from "axios";
 import * as CSS from "./styles";
 import removeVietnamese from "../../../common/Utilities/ConvertViString";
 import useForm from "../../../common/Form/useForm";
+import {FileUpload} from "primereact/fileupload";
+import {SelectButton} from "primereact/selectbutton";
+import {MultiSelect} from "primereact/multiselect";
 
 const Block = lazy(() => import("../../../components/Block"));
 const Input = lazy(() => import("../../../common/Input"));
@@ -94,45 +97,193 @@ const Contact = ({ title, content, id, t }) => {
           <CSS.Label>
             <CSS.FormGroup autoComplete="off" onSubmit={handleSubmit}>
               <Row type="flex" justify="space-between" align="middle">
-              <Col span={6}>
-                <Input
-                    type="text"
-                    name="ID"
-                    id="id"
-                    disabled
-                    required
-                    value={removeVietnamese(values.name) || ""}
-                    onChange={handleChange}
-                />
-              </Col>
-              <Col span={6}>
-                <Input
-                    type="text"
-                    name="Name"
-                    id="name"
-                    alt="id"
-                    required
-                    value={values.name || ""}
-                    onChange={handleChange}
-                />
-              </Col>
-              <Col span={6}>
-                <Input
-                    type="number"
-                    value={values.value || ""}
-                    name="Value"
-                    id="value"
-                    required
-                    onChange={handleChange}
-                />
-              </Col>
-              <Col span={4}>
-                <CSS.ButtonContainer>
-                  <Button name="submit" size="small" type="submit">
-                    {t("Submit")}
-                  </Button>
-                </CSS.ButtonContainer>
-              </Col>
+                <Col span={8}>
+                  <Input
+                      type="text"
+                      name="Tiêu đề"
+                      id="title"
+                      required
+                      value={values.title || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
+                <Col span={16}>
+                  <Input
+                      type="text"
+                      name="Mô tả"
+                      id="text"
+                      required
+                      value={values.text || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
+              </Row>
+              <div>Thành phần phụ</div>
+              <Row type="flex" justify="space-between" align="middle">
+                <Col span={8}>
+                  <Input
+                      type="text"
+                      name="Tiêu đề"
+                      id="title"
+                      required
+                      value={values.title || ""}
+                      onChange={handleChange}
+                  />
+                  <Input
+                      type="text"
+                      name="Mô tả"
+                      id="text"
+                      required
+                      value={values.text || ""}
+                      onChange={handleChange}
+                  />
+                  <Input
+                      type="text"
+                      name="Mô tả"
+                      id="text"
+                      required
+                      value={values.text || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
+                <Col span={8}>
+                  <Input
+                      type="text"
+                      name="Tiêu đề"
+                      id="title"
+                      required
+                      value={values.title || ""}
+                      onChange={handleChange}
+                  />
+                  <Input
+                      type="text"
+                      name="Mô tả"
+                      id="text"
+                      required
+                      value={values.text || ""}
+                      onChange={handleChange}
+                  />
+                  <Input
+                      type="text"
+                      name="Mô tả"
+                      id="text"
+                      required
+                      value={values.text || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
+                <Col span={8}>
+                  <Input
+                      type="text"
+                      name="Tiêu đề"
+                      id="title"
+                      required
+                      value={values.title || ""}
+                      onChange={handleChange}
+                  />
+                  <Input
+                      type="text"
+                      name="Mô tả"
+                      id="text"
+                      required
+                      value={values.text || ""}
+                      onChange={handleChange}
+                  />
+                  <Input
+                      type="text"
+                      name="Mô tả"
+                      id="text"
+                      required
+                      value={values.text || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
+              </Row>
+              <div>Nút</div>
+              <Row type="flex" justify="space-between" align="middle">
+                <Col span={8}>
+                  <Input
+                      type="text"
+                      name="Tên nút"
+                      id="title"
+                      required
+                      value={values.title || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
+                <Col span={8}>
+                  <Input
+                      type="text"
+                      name="Đường dẫn đến"
+                      id="text"
+                      required
+                      value={values.text || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
+                <Col span={8}>
+                  <Input
+                      type="text"
+                      name="Nền"
+                      id="title"
+                      required
+                      value={values.title || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
+              </Row>
+              <Row type="flex" justify="space-between" align="middle">
+                <Col span={8}>
+                  <Input
+                      type="text"
+                      name="Tên nút"
+                      id="title"
+                      required
+                      value={values.title || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
+                <Col span={8}>
+                  <Input
+                      type="text"
+                      name="Đường dẫn đến"
+                      id="text"
+                      required
+                      value={values.text || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
+                <Col span={8}>
+                  <Input
+                      type="text"
+                      name="Nền"
+                      id="title"
+                      required
+                      value={values.title || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
+              </Row>
+              <Row type="flex" justify="space-between" align="middle">
+                <Col span={11}>
+                  <div>Hình ảnh</div>
+
+                  <FileUpload></FileUpload>
+                </Col>
+                <Col span={11}>
+                  <div>Hình nền</div>
+                  <FileUpload></FileUpload>
+                </Col>
+              </Row>
+              <Row type="flex" justify="space-between" align="middle">
+                <Col span={11}>
+                  <div>Nội dung trái/phải</div>
+                  <SelectButton options={[{label:1, value: 1},{label:2, value: 2}]}/>
+                </Col>
+                <Col span={11}>
+                  <div>Hiệu ứng</div>
+                  <Select options={[{label:1, value: 1},{label:2, value: 2}]}></Select>
+                </Col>
               </Row>
             </CSS.FormGroup>
           </CSS.Label>

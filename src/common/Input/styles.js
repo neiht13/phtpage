@@ -13,9 +13,9 @@ export const Input = styled.input`
   border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
   outline: none;
   font-size: 0.875rem;
-  padding: 1rem 1.25rem;
+  padding: 0.8rem 1rem;
   transition: border-color 0.3s ease-in;
-  border-radius: 8px;
+  border-radius: 6px;
   color: #000;
 
   &:focus,

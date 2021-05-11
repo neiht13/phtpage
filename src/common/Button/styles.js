@@ -7,8 +7,8 @@ export const Button = styled.button`
   font-weight: 700;
   width: 100%;
   border: ${(props) => (props.color ? '1px solid #005aaa' : '0px')};
-  border-radius: 8px;
-  height: ${(props) => props.size === 'small' ? "40px" : "60px" };
+  border-radius: 6px;
+  height: ${(props) => props.size === 'small' ? "40px" : "55px" };
   outline: none;
   cursor: pointer;
   margin-top: 0.625rem;
