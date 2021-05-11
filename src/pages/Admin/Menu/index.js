@@ -41,7 +41,7 @@ const Contact = ({ title, content, id, t }) => {
   };
 
   const fetchMenu = () => {
-    axios.get('http://localhost:5000/menu_bar').then(res =>{
+    axios.get('http://localhost:5001/header-mongo').then(res =>{
       setMenuBar(res.data)
     })
   }

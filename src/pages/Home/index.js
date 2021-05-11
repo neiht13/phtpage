@@ -7,6 +7,7 @@ import MissionContent from "../../content/MissionContent.json";
 import ProductContent from "../../content/ProductContent.json";
 import ContactContent from "../../content/ContactContent.json";
 import axios from "axios";
+import GalleryX from "../../common/GalleryX";
 
 const ContactFrom = lazy(() => import("../../components/ContactForm"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
@@ -64,6 +65,7 @@ const Home = () => {
         icon="waving.svg"
         id="product"
       />
+      <GalleryX/>
       <ContactFrom
         title={ContactContent.title}
         content={ContactContent.text}
