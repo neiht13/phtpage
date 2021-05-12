@@ -10,6 +10,7 @@ import useForm from "../../../common/Form/useForm";
 import {FileUpload} from "primereact/fileupload";
 import {SelectButton} from "primereact/selectbutton";
 import {MultiSelect} from "primereact/multiselect";
+import {Dropdown} from "primereact/dropdown";
 
 const Block = lazy(() => import("../../../components/Block"));
 const Input = lazy(() => import("../../../common/Input"));
@@ -19,6 +20,7 @@ const TextArea = lazy(() => import("../../../common/TextArea"));
 const Contact = ({ title, content, id, t }) => {
   const { values, setValues, errors, handleChange, handleSubmit, shouldSubmit, setShouldSubmit, setUrlForm , isNew, setIsNew} = useForm();
   const [menuBar, setMenuBar] = useState(null);
+  const [menuBarSelect, setMenuBarSelect] = useState(null);
   useEffect(() =>{
     fetchMenu();
     setUrlForm("http://localhost:5000/menu_bar/new");
@@ -46,7 +48,30 @@ const Contact = ({ title, content, id, t }) => {
   const fetchMenu = () => {
     axios.get('http://localhost:5000/menu_bar').then(res =>{
       setMenuBar(res.data)
+        const tesst = res.data.map(item => {
+          let option = {
+            label: item.name,
+            value: item.id,
+          };
+          console.log(JSON.stringify(option))
+          return option;
+        })
+      console.log(JSON.stringify(tesst))
+      setMenuBarSelect(tesst)
     })
+  }
+  const dropdownHeader = () =>{
+    if (menuBar) {
+      const tesst = menuBar.map(item => {
+        let option = {};
+        option['label'] = item.name;
+        option['value'] = item.id;
+        console.log(option.toString())
+        return option;
+      })
+      console.log(tesst);
+      return tesst;
+    }
   }
 
   const deleteAction = (row) => {
@@ -118,175 +143,191 @@ const Contact = ({ title, content, id, t }) => {
                   />
                 </Col>
               </Row>
-              <div>Thành phần phụ</div>
+              <hr/>
+              <strong>Thành phần phụ</strong>
               <Row type="flex" justify="space-between" align="middle">
-                <Col span={8}>
+                <Col span={7}>
                   <Input
                       type="text"
-                      name="Tiêu đề"
-                      id="title"
+                      name="Tiêu đề phụ 1"
+                      id="sub_1_title"
                       required
-                      value={values.title || ""}
+                      value={values.sub_1_title || ""}
                       onChange={handleChange}
                   />
                   <Input
                       type="text"
                       name="Mô tả"
-                      id="text"
+                      id="sub_1_text"
                       required
-                      value={values.text || ""}
+                      value={values.sub_1_text || ""}
                       onChange={handleChange}
                   />
                   <Input
                       type="text"
-                      name="Mô tả"
-                      id="text"
+                      name="Hình ảnh"
+                      id="sub_1_image"
                       required
-                      value={values.text || ""}
+                      value={values.sub_1_image || ""}
                       onChange={handleChange}
                   />
                 </Col>
-                <Col span={8}>
+                <Col span={7}>
                   <Input
                       type="text"
-                      name="Tiêu đề"
-                      id="title"
+                      name="Tiêu đề phụ 2"
+                      id="sub_2_title"
                       required
-                      value={values.title || ""}
+                      value={values.sub_2_title || ""}
                       onChange={handleChange}
                   />
                   <Input
                       type="text"
                       name="Mô tả"
-                      id="text"
+                      id="sub_2_text"
                       required
-                      value={values.text || ""}
+                      value={values.sub_2_text || ""}
                       onChange={handleChange}
                   />
                   <Input
                       type="text"
-                      name="Mô tả"
-                      id="text"
+                      name="Hình ảnh"
+                      id="sub_2_image"
                       required
-                      value={values.text || ""}
+                      value={values.sub_2_image || ""}
                       onChange={handleChange}
                   />
                 </Col>
-                <Col span={8}>
+                <Col span={7}>
                   <Input
                       type="text"
-                      name="Tiêu đề"
-                      id="title"
+                      name="Tiêu đề phụ 3"
+                      id="sub_3_title"
                       required
-                      value={values.title || ""}
+                      value={values.sub_3_title || ""}
                       onChange={handleChange}
                   />
                   <Input
                       type="text"
                       name="Mô tả"
-                      id="text"
+                      id="sub_3_text"
                       required
-                      value={values.text || ""}
+                      value={values.sub_3_text || ""}
                       onChange={handleChange}
                   />
                   <Input
                       type="text"
-                      name="Mô tả"
-                      id="text"
+                      name="Hình ảnh"
+                      id="sub_3_image"
                       required
-                      value={values.text || ""}
+                      value={values.sub_3_image || ""}
                       onChange={handleChange}
                   />
                 </Col>
               </Row>
-              <div>Nút</div>
+              <hr/>
+              <strong>Nút</strong>
               <Row type="flex" justify="space-between" align="middle">
                 <Col span={8}>
                   <Input
                       type="text"
                       name="Tên nút"
-                      id="title"
+                      id="button_name_1"
                       required
-                      value={values.title || ""}
+                      value={values.button_name_1 || ""}
                       onChange={handleChange}
                   />
                 </Col>
                 <Col span={8}>
-                  <Input
-                      type="text"
-                      name="Đường dẫn đến"
-                      id="text"
-                      required
-                      value={values.text || ""}
+                  <label>Đường dẫn đến</label>
+                  <br/>
+                  <Dropdown
+                      id="button_url_1"
+                      value={values.button_url_1}
                       onChange={handleChange}
+                      options={menuBarSelect}
                   />
                 </Col>
                 <Col span={8}>
                   <Input
                       type="text"
                       name="Nền"
-                      id="title"
+                      id="button_background_1"
                       required
-                      value={values.title || ""}
+                      value={values.button_background_1 || ""}
                       onChange={handleChange}
                   />
                 </Col>
-              </Row>
-              <Row type="flex" justify="space-between" align="middle">
+              </Row>              <Row type="flex" justify="space-between" align="middle">
                 <Col span={8}>
                   <Input
                       type="text"
                       name="Tên nút"
-                      id="title"
+                      id="button_name_2"
                       required
-                      value={values.title || ""}
+                      value={values.button_name_2 || ""}
                       onChange={handleChange}
                   />
                 </Col>
                 <Col span={8}>
-                  <Input
-                      type="text"
-                      name="Đường dẫn đến"
-                      id="text"
-                      required
-                      value={values.text || ""}
+                  <label>Đường dẫn đến</label>
+                  <br/>
+                  <Dropdown
+                      id="button_url_2"
+                      value={values.button_url_2}
                       onChange={handleChange}
+                      options={menuBarSelect}
                   />
                 </Col>
                 <Col span={8}>
                   <Input
                       type="text"
                       name="Nền"
-                      id="title"
+                      id="button_background_2"
                       required
-                      value={values.title || ""}
+                      value={values.button_background_2 || ""}
                       onChange={handleChange}
                   />
                 </Col>
               </Row>
+              <hr/>
               <Row type="flex" justify="space-between" align="middle">
                 <Col span={11}>
                   <div>Hình ảnh</div>
 
-                  <FileUpload></FileUpload>
+                  <FileUpload
+                      id="image"
+                      value={values.image || ""}
+                      onChange={handleChange}
+                  />
                 </Col>
                 <Col span={11}>
                   <div>Hình nền</div>
                   <FileUpload></FileUpload>
                 </Col>
               </Row>
+              <hr/>
               <Row type="flex" justify="space-between" align="middle">
                 <Col span={11}>
                   <div>Nội dung trái/phải</div>
-                  <SelectButton options={[{label:1, value: 1},{label:2, value: 2}]}/>
+                  <SelectButton id="position" value={values.position} onChange={handleChange} options={[{label:'Trái', value: 'left'},{label:'Phải', value: 'right'}]}/>
                 </Col>
                 <Col span={11}>
                   <div>Hiệu ứng</div>
-                  <Select options={[{label:1, value: 1},{label:2, value: 2}]}></Select>
+                  <Dropdown id="effect" value={values.effect} onChange={handleChange} options={[{label:1, value: 1},{label:2, value: 2}]}/>
                 </Col>
+              </Row>
+              <Row>
+                <CSS.ButtonContainer>
+                  <Button name="submit" size="small" type="submit">
+                    {t("Submit")}
+                  </Button>
+                </CSS.ButtonContainer>
               </Row>
             </CSS.FormGroup>
           </CSS.Label>
+
+        <hr/>
           <Table dataSource={menuBar} columns={columns} />
       </div>
   );

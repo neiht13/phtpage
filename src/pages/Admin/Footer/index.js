@@ -34,6 +34,7 @@ const ContentBlock = ({title, content, id, t}) => {
         setUrlForm("http://localhost:5000/footer/new");
         if (shouldSubmit) {
             setShouldSubmit(false);
+            setShowForm(false)
         }
     }, [shouldSubmit])
     useEffect(() => {
@@ -243,7 +244,7 @@ const ContentBlock = ({title, content, id, t}) => {
                         </Col>
                     </Row>
                     <CSS.ButtonContainer>
-                        <Button name="submit" onClick={() => setShowForm(false)}>
+                        <Button name="submit">
                             {t("Submit")}
                         </Button>
                     </CSS.ButtonContainer>

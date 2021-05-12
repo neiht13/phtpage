@@ -7,6 +7,7 @@ function callback(key) {
 }
 
 const AdminPage = lazy(() => import("./Menu"));
+const SystemPage = lazy(() => import("./System"));
 const ContactMessagePage = lazy(() => import("./Message"));
 const FooterPage = lazy(() => import("./Footer"));
 const BlockContent = lazy(() => import("./BlockContent"));
@@ -18,16 +19,19 @@ const Admin = () => {
         <Container>
             <ScrollToTop/>
                 <TabView>
-                    <TabPanel header="Header">
+                    <TabPanel header="Hệ thống">
+                        <SystemPage/>
+                    </TabPanel>
+                    <TabPanel header="Tiêu đề">
                         <AdminPage/>
                     </TabPanel>
-                    <TabPanel header="Footer">
+                    <TabPanel header="Chân trang">
                         <FooterPage/>
                     </TabPanel>
-                    <TabPanel header="Block">
+                    <TabPanel header="Thành phần nội dung">
                         <BlockContent/>
                     </TabPanel>
-                    <TabPanel header="Message">
+                    <TabPanel header="Tin nhắn">
                         <ContactMessagePage/>
                     </TabPanel>
                 </TabView>

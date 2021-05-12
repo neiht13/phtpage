@@ -37,7 +37,7 @@ const useForm = () => {
   }, [errors, shouldSubmit]);
 
   const handleChange = (event) => {
-    event.persist();
+    // event.persist();
     console.log(event.target)
     setValues((values) => ({
       ...values,

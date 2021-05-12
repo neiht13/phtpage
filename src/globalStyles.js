@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 const primaryColor = "#005aaa";
+const primaryFont = "Segoe UI";
 const Styles = createGlobalStyle`
     body,
     html,
@@ -45,6 +46,9 @@ const Styles = createGlobalStyle`
 
     h1 {
         font-weight: 600;
+    }
+    hr {
+      border-top: solid 1px #005aaa;
     }
 
     a {

@@ -842,8 +842,8 @@ button {
 
 .p-colorpicker-panel {
     position: relative;
-    width: 193px;
-    height: 166px;
+    width: 178px;
+    height: 158px;
 }
 
 .p-colorpicker-overlay-panel {
@@ -861,8 +861,8 @@ button {
 .p-colorpicker-panel .p-colorpicker-color-selector {
     width: 150px;
     height: 150px;
-    top: 8px;
-    left: 8px;
+    top: 4px;
+    left: 4px;
     position: absolute;
 }
 
@@ -886,10 +886,10 @@ button {
 }
 
 .p-colorpicker-panel .p-colorpicker-hue {
-    width: 17px;
+    width: 16px;
     height: 150px;
-    top: 8px;
-    left: 167px;
+    top: 4px;
+    left: 158px;
     position: absolute;
     opacity: .85;
 }

@@ -23,13 +23,13 @@ const ContactMessage = ({ title, content, id, t }) => {
   },[resolvedAction])
 
   const fetchData = () => {
-    axios.get('http://localhost:5001/messages-mongo').then(res =>{
+    axios.get('http://localhost:5000/messages').then(res =>{
       setMessages(res.data)
     })
   }
 
   const solveAction = (row) => {
-    axios.post('http://localhost:5001/messages-mongo/update', {
+    axios.post('http://localhost:5000/messages/update', {
       id: row.target.id
     }).then(res => {
       setResolvedAction(resolvedAction => !resolvedAction);

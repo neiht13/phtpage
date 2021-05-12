@@ -15,7 +15,7 @@ const MiddleBlock = lazy(() => import("../../components/MiddleBlock"));
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 
-const Home = () => {
+const Demo = () => {
   const [menuBar, setMenuBar] = useState([]);
   useEffect(() => {
       axios.get('http://localhost:5000/menu_bar').then(res =>{
@@ -74,4 +74,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Demo;

@@ -717,8 +717,9 @@
 }
 
 .p-colorpicker-preview {
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
+    margin-top: 10px !important;
 }
 
 .p-colorpicker-panel {
@@ -737,9 +738,10 @@
 
 .p-dropdown {
     background: #ffffff;
-    border: 1px solid #ced4da;
+    border: 1px solid #005aaa;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-    border-radius: 3px;
+    border-radius: 6px;
+    height: 3rem;
 }
 
 .p-dropdown:not(.p-disabled):hover {

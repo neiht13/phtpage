@@ -1,5 +1,5 @@
 import {lazy, useEffect, useState} from "react";
-import { Row, Col, Table } from "antd";
+import { Row, Col } from "antd";
 import Zoom from "react-reveal/Zoom";
 import { withTranslation } from "react-i18next";
 
@@ -8,6 +8,8 @@ import * as CSS from "./styles";
 import removeVietnamese from "../../../common/Utilities/ConvertViString";
 import useForm from "../../../common/Form/useForm";
 
+
+const TableX = lazy(() => import("../../../common/Table"));
 const Block = lazy(() => import("../../../components/Block"));
 const Input = lazy(() => import("../../../common/Input"));
 const Button = lazy(() => import("../../../common/Button"));
@@ -41,7 +43,7 @@ const Contact = ({ title, content, id, t }) => {
   };
 
   const fetchMenu = () => {
-    axios.get('http://localhost:5001/header-mongo').then(res =>{
+    axios.get('http://localhost:5000/menu_bar').then(res =>{
       setMenuBar(res.data)
     })
   }
@@ -141,7 +143,7 @@ const Contact = ({ title, content, id, t }) => {
               </Row>
             </CSS.FormGroup>
           </CSS.Label>
-          <Table dataSource={menuBar} columns={columns} />
+          <TableX dataSource={menuBar} columns={columns} />
       </div>
   );
 };

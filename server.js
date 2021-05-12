@@ -1,9 +1,9 @@
-var express = require('express');
-var moment = require('moment');
-var cors = require('cors')
+let express = require('express');
+let moment = require('moment');
+let cors = require('cors')
 
-var app = express();
-var port = process.env.PORT || 5000;
+let app = express();
+let port = process.env.PORT || 5000;
 app.listen(port, function () {
     console.log('Server is running...'+ port);
 });
@@ -22,14 +22,14 @@ app.use(function(req, res, next) {
 app.get('/data', function (req, res) {
     res.json({txt: 'Hello'})
 });
-var mysql = require("mysql");
-var db_config = {
+let mysql = require("mysql");
+let db_config = {
     host: "localhost",
     user: "root",
     password: "",
     database: "reactlanding"
 };
-var connection = mysql.createConnection(db_config);
+let connection = mysql.createConnection(db_config);
 app.get('/menu_bar', function (req, res) {
     connection.connect(function (err) {
         connection.query('select * from menu_bar order by value', function (err, recordset) {
@@ -179,8 +179,8 @@ app.post('/messages/update', (req, res) => {
 // });
 
 module.exports = function(){
-    var mysql      = require('mysql');
-    var connection;
+    let mysql      = require('mysql');
+    let connection;
     function handleDisconnect() {
         connection = mysql.createConnection(db_config); // Recreate the connection, since
         connection.on('error', function(err) {
