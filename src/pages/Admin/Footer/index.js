@@ -72,6 +72,7 @@ const ContentBlock = ({title, content, id, t}) => {
         console.log(row);
         setValues(row);
         setIsNew(false);
+        setShowForm(true)
     }
 
     const columns = [
@@ -171,7 +172,7 @@ const ContentBlock = ({title, content, id, t}) => {
                                 type="text"
                                 name="Nội dung mục phụ 1"
                                 id="sub_1_content"
-                                required
+
                                 value={values.sub_1_content || ""}
                                 onChange={handleChange}
                             />
@@ -193,7 +194,7 @@ const ContentBlock = ({title, content, id, t}) => {
                                 type="text"
                                 name="Nội dung mục phụ 2"
                                 id="sub_2_content"
-                                required
+
                                 value={values.sub_2_content || ""}
                                 onChange={handleChange}
                             />
@@ -215,7 +216,6 @@ const ContentBlock = ({title, content, id, t}) => {
                                 type="text"
                                 name="Nội dung mục phụ 3"
                                 id="sub_3_content"
-                                required
                                 value={values.sub_3_content || ""}
                                 onChange={handleChange}
                             />
@@ -237,7 +237,6 @@ const ContentBlock = ({title, content, id, t}) => {
                                 type="text"
                                 name="Nội dung mục phụ 4"
                                 id="sub_4_content"
-                                required
                                 value={values.sub_4_content || ""}
                                 onChange={handleChange}
                             />

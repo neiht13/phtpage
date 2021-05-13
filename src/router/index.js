@@ -10,7 +10,7 @@ import GlobalStyles from "../globalStyles";
 const Router = () => {
   return (
     <Suspense fallback={null}>
-      <GlobalStyles />
+      <GlobalStyles primaryFont="Helvetica" primaryColor="red"/>
       <Header id="header"/>
       <div id="firstBlock"/>
       <Switch>

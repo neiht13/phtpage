@@ -742,6 +742,7 @@
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     border-radius: 6px;
     height: 3rem;
+    width: 300px;
 }
 
 .p-dropdown:not(.p-disabled):hover {
@@ -1085,7 +1086,7 @@
 .p-inputswitch .p-inputswitch-slider {
     background: #ced4da;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-    border-radius: 30px;
+    border-radius: 8px;
 }
 
 .p-inputswitch .p-inputswitch-slider:before {
@@ -1121,7 +1122,7 @@
 }
 
 .p-inputswitch.p-inputswitch-checked:not(.p-disabled):hover .p-inputswitch-slider {
-    background: #0d89ec;
+    background: #005aaa;
 }
 
 .p-inputswitch.p-invalid {

@@ -4,11 +4,11 @@ import {Button} from 'primereact/button';
 import {Toast} from 'primereact/toast';
 import {BreadCrumb} from 'primereact/breadcrumb';
 import {Card} from 'primereact/card';
-import './LoginPage.scss';
-import { useHistory } from 'react-router-dom';
+import './LoginPage.css';
+import {Link, useHistory} from 'react-router-dom';
 import axios from "axios";
 
-export function LoginPage() {
+const Login = () => {
     let history = useHistory();
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
@@ -35,6 +35,10 @@ export function LoginPage() {
             loginAction(username, password)
         }
     }
+    const nextPage = () => {
+
+    }
+
     const loginAction = () => {
         axios.post('http://localhost:5000/login', {username, password}
         ).then(res => {
@@ -59,12 +63,14 @@ export function LoginPage() {
             <span>
                 <div className="p-grid">
                     <div className="p-col-3 p-offset-9">
+                        <Link to="/admin">
                         <Button
                             className="submit p-button-raised p-button-success p-button-rounded"
                             onClick={showSubmit}
                             label="Login"
                             icon="pi pi-key"
                         />
+                            </Link>
                     </div>
                 </div>
             </span>);
@@ -113,3 +119,5 @@ export function LoginPage() {
         </div>
     )
 }
+
+export default Login;
