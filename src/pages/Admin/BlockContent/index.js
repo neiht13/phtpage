@@ -11,6 +11,7 @@ import {FileUpload} from "primereact/fileupload";
 import {SelectButton} from "primereact/selectbutton";
 import {MultiSelect} from "primereact/multiselect";
 import {Dropdown} from "primereact/dropdown";
+import {InputSwitch} from "primereact/inputswitch";
 
 const Block = lazy(() => import("../../../components/Block"));
 const Input = lazy(() => import("../../../common/Input"));
@@ -23,28 +24,11 @@ const Contact = ({ title, content, id, t }) => {
   const [menuBarSelect, setMenuBarSelect] = useState(null);
   useEffect(() =>{
     fetchMenu();
-    setUrlForm("http://localhost:5000/menu_bar/new");
+    setUrlForm("http://localhost:5000/block-content/update");
     if (shouldSubmit) {
       setShouldSubmit(false);
     }
   },[shouldSubmit])
-  useEffect(() =>{
-    fetchMenu();
-    if (!isNew) {
-      setUrlForm("http://localhost:5000/menu_bar/update");
-    }
-  },[isNew, shouldSubmit])
-  const ValidationType = ({ type }) => {
-    const ErrorMessage = errors[type];
-    return errors[type] ? (
-      <Zoom cascade>
-        <CSS.Span>{ErrorMessage}</CSS.Span>
-      </Zoom>
-    ) : (
-      <CSS.Span />
-    );
-  };
-
   const fetchMenu = () => {
     axios.get('http://localhost:5000/menu_bar').then(res =>{
       setMenuBar(res.data)
@@ -105,9 +89,9 @@ const Contact = ({ title, content, id, t }) => {
       key: 'action',
       render: (i, row) =>
           <span>
-            <i className={`fas fa-times`} style={{color: 'tomato', cursor: 'pointer'}}
-               id={i} onClick={deleteAction}/>
-            &nbsp;&nbsp;&nbsp;
+            {/*<i className={`fas fa-times`} style={{color: 'tomato', cursor: 'pointer'}}*/}
+            {/*   id={i} onClick={deleteAction}/>*/}
+            {/*&nbsp;&nbsp;&nbsp;*/}
             <i className={`fas fa-pencil-alt`} style={{cursor: 'pointer'}}
                id={i} onClick={(e) => editAction(row)}/>
           </span>
@@ -122,36 +106,46 @@ const Contact = ({ title, content, id, t }) => {
           <CSS.Label>
             <CSS.FormGroup autoComplete="off" onSubmit={handleSubmit}>
               <Row type="flex" justify="space-between" align="middle">
+                <Col span={6}>
+                  <Input
+                      type="text"
+                      name="ID trang"
+                      id="id"
+                      disabled
+                      value={values.id || ""}
+                      onChange={handleChange}
+                  />
+                </Col>
                 <Col span={8}>
                   <Input
                       type="text"
                       name="Tiêu đề"
                       id="title"
-                      required
                       value={values.title || ""}
                       onChange={handleChange}
                   />
                 </Col>
-                <Col span={16}>
+                <Col span={10}>
                   <Input
                       type="text"
                       name="Mô tả"
                       id="text"
-                      required
+                      
                       value={values.text || ""}
                       onChange={handleChange}
                   />
                 </Col>
               </Row>
               <hr/>
-              <strong>Thành phần phụ</strong>
-              <Row type="flex" justify="space-between" align="middle">
+              <strong>Thành phần phụ</strong> &nbsp;&nbsp;&nbsp;
+              <InputSwitch id="subContent" checked={values.subContent} onChange={handleChange} />
+              {values.subContent && <Row type="flex" justify="space-between" align="middle">
                 <Col span={7}>
                   <Input
                       type="text"
                       name="Tiêu đề phụ 1"
                       id="sub_1_title"
-                      required
+                      
                       value={values.sub_1_title || ""}
                       onChange={handleChange}
                   />
@@ -159,7 +153,7 @@ const Contact = ({ title, content, id, t }) => {
                       type="text"
                       name="Mô tả"
                       id="sub_1_text"
-                      required
+                      
                       value={values.sub_1_text || ""}
                       onChange={handleChange}
                   />
@@ -167,7 +161,7 @@ const Contact = ({ title, content, id, t }) => {
                       type="text"
                       name="Hình ảnh"
                       id="sub_1_image"
-                      required
+                      
                       value={values.sub_1_image || ""}
                       onChange={handleChange}
                   />
@@ -177,7 +171,7 @@ const Contact = ({ title, content, id, t }) => {
                       type="text"
                       name="Tiêu đề phụ 2"
                       id="sub_2_title"
-                      required
+                      
                       value={values.sub_2_title || ""}
                       onChange={handleChange}
                   />
@@ -185,7 +179,7 @@ const Contact = ({ title, content, id, t }) => {
                       type="text"
                       name="Mô tả"
                       id="sub_2_text"
-                      required
+                      
                       value={values.sub_2_text || ""}
                       onChange={handleChange}
                   />
@@ -193,7 +187,7 @@ const Contact = ({ title, content, id, t }) => {
                       type="text"
                       name="Hình ảnh"
                       id="sub_2_image"
-                      required
+                      
                       value={values.sub_2_image || ""}
                       onChange={handleChange}
                   />
@@ -203,7 +197,7 @@ const Contact = ({ title, content, id, t }) => {
                       type="text"
                       name="Tiêu đề phụ 3"
                       id="sub_3_title"
-                      required
+                      
                       value={values.sub_3_title || ""}
                       onChange={handleChange}
                   />
@@ -211,7 +205,7 @@ const Contact = ({ title, content, id, t }) => {
                       type="text"
                       name="Mô tả"
                       id="sub_3_text"
-                      required
+                      
                       value={values.sub_3_text || ""}
                       onChange={handleChange}
                   />
@@ -219,21 +213,22 @@ const Contact = ({ title, content, id, t }) => {
                       type="text"
                       name="Hình ảnh"
                       id="sub_3_image"
-                      required
+                      
                       value={values.sub_3_image || ""}
                       onChange={handleChange}
                   />
                 </Col>
-              </Row>
+              </Row>}
               <hr/>
-              <strong>Nút</strong>
-              <Row type="flex" justify="space-between" align="middle">
+              <strong>Nút</strong> &nbsp;&nbsp;&nbsp;
+              <InputSwitch id="hasButton" checked={values.hasButton} onChange={handleChange} />
+              {values.hasButton && <Row type="flex" justify="space-between" align="middle">
                 <Col span={8}>
                   <Input
                       type="text"
                       name="Tên nút"
                       id="button_name_1"
-                      required
+                      
                       value={values.button_name_1 || ""}
                       onChange={handleChange}
                   />
@@ -243,7 +238,7 @@ const Contact = ({ title, content, id, t }) => {
                   <br/>
                   <Dropdown
                       id="button_url_1"
-                      value={values.button_url_1}
+                      value={values.button_url_1 || ""}
                       onChange={handleChange}
                       options={menuBarSelect}
                   />
@@ -253,18 +248,19 @@ const Contact = ({ title, content, id, t }) => {
                       type="text"
                       name="Nền"
                       id="button_background_1"
-                      required
+                      
                       value={values.button_background_1 || ""}
                       onChange={handleChange}
                   />
                 </Col>
-              </Row>              <Row type="flex" justify="space-between" align="middle">
+              </Row> }
+              {values.hasButton &&  <Row type="flex" justify="space-between" align="middle">
                 <Col span={8}>
                   <Input
                       type="text"
                       name="Tên nút"
                       id="button_name_2"
-                      required
+                      
                       value={values.button_name_2 || ""}
                       onChange={handleChange}
                   />
@@ -274,7 +270,7 @@ const Contact = ({ title, content, id, t }) => {
                   <br/>
                   <Dropdown
                       id="button_url_2"
-                      value={values.button_url_2}
+                      value={values.button_url_2 || ""}
                       onChange={handleChange}
                       options={menuBarSelect}
                   />
@@ -284,12 +280,12 @@ const Contact = ({ title, content, id, t }) => {
                       type="text"
                       name="Nền"
                       id="button_background_2"
-                      required
+                      
                       value={values.button_background_2 || ""}
                       onChange={handleChange}
                   />
                 </Col>
-              </Row>
+              </Row>}
               <hr/>
               <Row type="flex" justify="space-between" align="middle">
                 <Col span={11}>
@@ -303,18 +299,18 @@ const Contact = ({ title, content, id, t }) => {
                 </Col>
                 <Col span={11}>
                   <div>Hình nền</div>
-                  <FileUpload></FileUpload>
+                  <FileUpload id="background"></FileUpload>
                 </Col>
               </Row>
               <hr/>
               <Row type="flex" justify="space-between" align="middle">
                 <Col span={11}>
                   <div>Nội dung trái/phải</div>
-                  <SelectButton id="position" value={values.position} onChange={handleChange} options={[{label:'Trái', value: 'left'},{label:'Phải', value: 'right'}]}/>
+                  <SelectButton id="position" value={values.position || ""} onChange={handleChange} options={[{label:'Trái', value: 'left'},{label:'Phải', value: 'right'}]}/>
                 </Col>
                 <Col span={11}>
                   <div>Hiệu ứng</div>
-                  <Dropdown id="effect" value={values.effect} onChange={handleChange} options={[{label:1, value: 1},{label:2, value: 2}]}/>
+                  <Dropdown id="effect" value={values.effect || ""} onChange={handleChange} options={[{label:1, value: 1},{label:2, value: 2}]}/>
                 </Col>
               </Row>
               <Row>

@@ -8,6 +8,7 @@ import * as CSS from "./styles";
 import removeVietnamese from "../../../common/Utilities/ConvertViString";
 import useForm from "../../../common/Form/useForm";
 import {ColorPicker} from "primereact/colorpicker";
+import {Dropdown} from "primereact/dropdown";
 
 
 const TableX = lazy(() => import("../../../common/Table"));
@@ -29,147 +30,96 @@ const Contact = ({title, content, id, t}) => {
         isNew,
         setIsNew
     } = useForm();
-    const [menuBar, setMenuBar] = useState(null);
     useEffect(() => {
         fetchMenu();
-        setUrlForm("http://localhost:5000/menu_bar/new");
+        setUrlForm("http://localhost:5000/system/update");
         if (shouldSubmit) {
             setShouldSubmit(false);
         }
     }, [shouldSubmit])
-    useEffect(() => {
-        fetchMenu();
-        if (!isNew) {
-            setUrlForm("http://localhost:5000/menu_bar/update");
-        }
-    }, [isNew, shouldSubmit])
-    const ValidationType = ({type}) => {
-        const ErrorMessage = errors[type];
-        return errors[type] ? (
-            <Zoom cascade>
-                <CSS.Span>{ErrorMessage}</CSS.Span>
-            </Zoom>
-        ) : (
-            <CSS.Span/>
-        );
-    };
-
     const fetchMenu = () => {
-        axios.get('http://localhost:5000/menu_bar').then(res => {
-            setMenuBar(res.data)
+        axios.get('http://localhost:5000/system').then(res => {
+            setValues(res.data[0])
         })
     }
 
-    const deleteAction = (row) => {
-        axios.post('http://localhost:5000/menu_bar/delete', {
-            id: row.target.id
-        }).then(res => {
-            fetchMenu()
-        })
-    }
 
-    const editAction = (row) => {
-        console.log(row);
-        setValues(row);
-        setIsNew(false);
+    const optionsFont = [
+        {label: "Segoe UI", value: "Segoe UI"},
+        {label: "Helvetica", value: "Helvetica"},
+        {label: "Calibri", value: "Calibri"},
+        {label: "Tahoma", value: "Tahoma"},
+        {label: "Times New Roman", value: "Times New Roman"},
+        {label: "Arial", value: "Arial"},
+    ]
+    const fontOptionTemplate = (option) => {
+        return (
+            <span style={{fontFamily: option.value}}>{option.label}</span>
+        );
     }
-
-    const columns = [
-        {
-            title: 'ID',
-            dataIndex: 'id',
-            key: 'id',
-        },
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
-        },
-        {
-            title: 'Value',
-            dataIndex: 'value',
-            key: 'value',
-        },
-        {
-            title: 'Action',
-            dataIndex: 'id',
-            key: 'action',
-            render: (i, row) =>
-                <span>
-            <i className={`fas fa-times`} style={{color: 'tomato', cursor: 'pointer'}}
-               id={i} onClick={deleteAction}/>
-                    &nbsp;&nbsp;&nbsp;
-                    <i className={`fas fa-pencil-alt`} style={{cursor: 'pointer'}}
-                       id={i} onClick={(e) => editAction(row)}/>
-          </span>
-        },
-    ];
 
     return (
         <div>
             {/*<Col lg={12} md={11} sm={24}>*/}
             {/*  <Footer padding={true} title={title} content={content} />*/}
             {/*</Col>*/}
-            <div className="strong">Màu sắc chủ đạo</div>
+            <CSS.Label>
+                <CSS.FormGroup autoComplete="off" onSubmit={handleSubmit}>
+
             <Row>
-                <Col>
-                    <ColorPicker id="primaryColor" value={values.primaryColor} onChange={handleChange}/>
-                </Col>
+                <Col span={4}>
+                    <label>Màu sắc chủ đạo</label> &nbsp;&nbsp;&nbsp;
+                </Col> <Col>
+                <ColorPicker id="primary_color" value={values.primary_color} onChange={handleChange}/>
+            </Col>
                 <Col span={6}>
                     <Input
                         type="text"
-                        id="primaryColor"
-                        value={values.primaryColor}
+                        id="primary_color"
+                        value={values.primary_color}
                         onChange={handleChange}
                     />
                 </Col>
             </Row>
-            <CSS.Label>
-                <CSS.FormGroup autoComplete="off" onSubmit={handleSubmit}>
-                    <Row type="flex" justify="space-between" align="middle">
-                        <Col span={6}>
-                            <Input
-                                type="text"
-                                name="ID"
-                                id="id"
-                                disabled
-                                required
-                                value={removeVietnamese(values.name) || ""}
-                                onChange={handleChange}
-                            />
-                        </Col>
-                        <Col span={6}>
-                            <Input
-                                type="text"
-                                name="Name"
-                                id="name"
-                                alt="id"
-                                required
-                                value={values.name || ""}
-                                onChange={handleChange}
-                            />
-                        </Col>
-                        <Col span={6}>
-                            <Input
-                                type="number"
-                                value={values.value || ""}
-                                name="Value"
-                                id="value"
-                                required
-                                onChange={handleChange}
-                            />
-                        </Col>
-                        <Col span={4}>
-                            <CSS.ButtonContainer>
-                                <Button name="submit" size="small" type="submit">
-                                    {t("Submit")}
-                                </Button>
-                            </CSS.ButtonContainer>
-                        </Col>
-                    </Row>
+            <Row>
+                <Col span={4}>
+                    <label>Màu sắc font chữ</label> &nbsp;&nbsp;&nbsp;
+                </Col>
+                <Col>
+                    <ColorPicker id="primary_font_color" value={values.primary_font_color} onChange={handleChange}/>
+                </Col>
+                <Col span={6}>
+                    <Input
+                        type="text"
+                        id="primary_font_color"
+                        value={values.primary_font_color}
+                        onChange={handleChange}
+                    />
+                </Col>
+            </Row>
+
+            <Row>
+                <Col span={4}>
+                    <label>Font chữ</label> &nbsp;&nbsp;&nbsp;
+                </Col>
+                <Col span={6}>
+                    <Dropdown
+                        id="primary_font"
+                        value={values.primary_font}
+                        onChange={handleChange}
+                        options={optionsFont}
+                        itemTemplate={fontOptionTemplate}
+                    />
+                </Col>
+            </Row>
+            <CSS.ButtonContainer>
+                <Button name="submit">
+                    {t("Submit")}
+                </Button>
+            </CSS.ButtonContainer>
                 </CSS.FormGroup>
             </CSS.Label>
-            <TableX dataSource={menuBar} columns={columns}/>
+            <hr/>
         </div>
     );
 };

@@ -12,6 +12,10 @@ const routes = [
     path: ["/demo"],
     component: "Demo",
   },
+  {
+    path: ["/login"],
+    component: "Login",
+  },
 ];
 
 export default routes;

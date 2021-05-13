@@ -6,20 +6,32 @@ const GalleryX = ({ id, images, onClick }) =>
 
   const im = [
     {
-      url: '/img/images/dtp/seudaudo.jpg',
+      url: '/img/bing/BingWallpaper (0).jpg',
+      alt: 0
+    },
+    {
+      url: '/img/bing/BingWallpaper (1).jpg',
       alt: 1
     },
     {
-      url: '/img/images/dtp/langcuphobang.jpg',
+      url: '/img/bing/BingWallpaper (2).jpg',
       alt: 2
     },
     {
-      url: '/img/images/dtp/langhoasadec.jpg',
+      url: '/img/bing/BingWallpaper (3).jpg',
       alt: 3
     },
     {
-      url: '/img/images/dtp/tramchimtamnong.jpg',
+      url: '/img/bing/BingWallpaper (4).jpg',
       alt: 4
+    },
+    {
+      url: '/img/bing/BingWallpaper (5).jpg',
+      alt: 5
+    },
+    {
+      url: '/img/bing/BingWallpaper (6).jpg',
+      alt: 6
     },
   ]
   const itemTemplate = (item) => {
@@ -33,7 +45,7 @@ const GalleryX = ({ id, images, onClick }) =>
 
   <CSS.GalleryX>
     <i className="pi pi-android"/>
-    <Galleria value={im} numVisible={3} style={{maxWidth: '1440px'}}
+    <Galleria value={im} numVisible={5} style={{maxWidth: '1440px'}}
               item={itemTemplate} thumbnail={thumbnailTemplate} />
 
   </CSS.GalleryX>
