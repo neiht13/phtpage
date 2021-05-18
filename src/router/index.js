@@ -10,8 +10,8 @@ import GlobalStyles from "../globalStyles";
 const Router = () => {
   return (
     <Suspense fallback={null}>
-      <GlobalStyles primaryFont="Helvetica" primaryColor="red"/>
-      <Header id="header"/>
+      <GlobalStyles primaryFont="Helvetica" primaryColor="#005aaa"/>
+      {/*<Header id="header"/>*/}
       <div id="firstBlock"/>
       <Switch>
         {routes.map((routeItem) => {
@@ -25,7 +25,7 @@ const Router = () => {
           );
         })}
       </Switch>
-      <Footer />
+      {/*<Footer />*/}
     </Suspense>
   );
 };

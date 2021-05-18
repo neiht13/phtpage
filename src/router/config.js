@@ -5,6 +5,10 @@ const routes = [
     component: "Home",
   },
   {
+    path: ["/fadmin"],
+    component: "FisrtAdmin",
+  },
+  {
     path: ["/admin"],
     component: "Admin",
   },
