@@ -81,11 +81,16 @@ const Styles = createGlobalStyle`
         padding-right: 2rem;
       }
 
-    .ant-notification-notice-icon-success {
-        color: rgb(255,130,92);
+    span {
+      font-family: Helvetica, sans-serif;
     }
-    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-      color: #005aaa;
+    header {
+      color: #005aaa !important;
+      font-family: Helvetica, sans-serif;
+    }
+    footer {
+      color: #005aaa !important;
+      font-family: Helvetica, sans-serif;
     }
     
     .anticon {
