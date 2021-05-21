@@ -61,12 +61,15 @@ const Styles = createGlobalStyle`
     }
     i {
         color: #005aaa;
-        font-size: 18px;
       }
-
-      *:focus {
-        outline: none;
+    
+    input {
+      :focus,
+      :hover {
+        border-color: #005aaa !important;
       }
+    }
+     
 
       .about-block-image svg {
         text-align: center;
@@ -83,6 +86,10 @@ const Styles = createGlobalStyle`
 
     span {
       font-family: Helvetica, sans-serif;
+      :focus,
+      :hover {
+        border-color: #005aaa !important;
+      }
     }
     header {
       color: #005aaa !important;
@@ -95,6 +102,9 @@ const Styles = createGlobalStyle`
     
     .anticon {
       color: #005aaa !important;
+    }
+    ::after {
+      color: #005aaa;
     }
 `;
 

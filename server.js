@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
     res.header("Content-Type", "application/json");
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
     res.header("Access-Control-Allow-Credentials", true);
     next();
 });
@@ -30,7 +30,7 @@ let db_config = {
     database: "reactlanding"
 };
 let connection = mysql.createConnection(db_config);
-app.get('/menu_bar', function (req, res) {
+app.get('/api/menu_bar', function (req, res) {
     connection.connect(function (err) {
         connection.query('select * from menu_bar order by value', function (err, recordset) {
             if (err) console.log(err)
@@ -38,6 +38,27 @@ app.get('/menu_bar', function (req, res) {
         })
     });
 });
+
+app.post('/api/menu_bar', (req, res) => {
+    console.log("new menu" + req.body);
+    const menu = req.body;
+    let sql = 'insert into menu_bar(id, name, value) ' +
+        `values('${menu.id || ''}','${menu.name || ''}',${menu.value || ''})` ;
+    let sql2 = `insert into block_content(id) values('${menu.id}')`
+    connection.connect(function (err) {
+        connection.query(sql, function (err, recordset) {
+            if (err) {
+                res.status(400).send(err);
+            } else res.send(recordset);
+        });
+        // connection.query(sql2, function (err, recordset) {
+        //     if (err) {
+        //         res.status(400).send(err);
+        //     }
+        // });
+    });
+});
+
 app.post('/menu_bar/delete', (req, res) => {
     const item = req.body;
     let sqlDelete = `delete from menu_bar where id like '` + item.id + `'` ;
@@ -45,25 +66,6 @@ app.post('/menu_bar/delete', (req, res) => {
         connection.query(sqlDelete, function (err, recordset) {
           if (err) res.send(recordset);
           res.send(recordset);
-        });
-    });
-});
-app.post('/menu_bar/new', (req, res) => {
-    console.log("new menu" + req.body);
-    const menu = req.body;
-    let sql = 'insert into menu_bar(id, name, value) ' +
-              `values('${menu.id || ''}','${menu.name || ''}',${menu.value || ''})` ;
-    let sql2 = `insert into block_content(id) values('${menu.id}')`
-    connection.connect(function (err) {
-        connection.query(sql, function (err, recordset) {
-          if (err) {
-              res.status(400).send(err);
-          } else res.send(recordset);
-        });
-        connection.query(sql2, function (err, recordset) {
-          if (err) {
-              res.status(400).send(err);
-          }
         });
     });
 });

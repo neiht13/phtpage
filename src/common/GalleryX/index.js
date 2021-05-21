@@ -6,31 +6,31 @@ const GalleryX = ({ id, images, onClick }) =>
 
   const im = [
     {
-      url: '/img/bing/BingWallpaper (0).jpg',
+      url: '/img/images/bing/BingWallpaper (0).jpg',
       alt: 0
     },
     {
-      url: '/img/bing/BingWallpaper (1).jpg',
+      url: '/img/images/bing/BingWallpaper (1).jpg',
       alt: 1
     },
     {
-      url: '/img/bing/BingWallpaper (2).jpg',
+      url: '/img/images/bing/BingWallpaper (2).jpg',
       alt: 2
     },
     {
-      url: '/img/bing/BingWallpaper (3).jpg',
+      url: '/img/images/bing/BingWallpaper (3).jpg',
       alt: 3
     },
     {
-      url: '/img/bing/BingWallpaper (4).jpg',
+      url: '/img/images/bing/BingWallpaper (4).jpg',
       alt: 4
     },
     {
-      url: '/img/bing/BingWallpaper (5).jpg',
+      url: '/img/images/bing/BingWallpaper (5).jpg',
       alt: 5
     },
     {
-      url: '/img/bing/BingWallpaper (6).jpg',
+      url: '/img/images/bing/BingWallpaper (6).jpg',
       alt: 6
     },
   ]
