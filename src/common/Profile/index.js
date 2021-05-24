@@ -34,7 +34,7 @@ export const AppProfile = ({setSelectedMenu}) => {
                         <SubMenu key="sub1" icon={<Icon name="user-cog"/>} title="Phan Thien">
                             <Menu.Item key="3">Account</Menu.Item>
                             <Menu.Item key="4">Notifications</Menu.Item>
-                            <Menu.Item key="5" onClick={() => setSelectedMenu('login')}>Logout</Menu.Item>
+                            <Menu.Item key="5"><Link to={'login'}>Logout</Link></Menu.Item>
                         </SubMenu>
                     </Menu>
                 </div>

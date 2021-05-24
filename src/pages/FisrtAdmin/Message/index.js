@@ -8,6 +8,7 @@ import * as CSS from "./styles";
 import removeVietnamese from "../../../common/Utilities/ConvertViString";
 import useForm from "../../../common/Form/useForm";
 import TableX from "../../../common/Table";
+import * as instanceApi from "./../../../service/service"
 
 const Block = lazy(() => import("../../../components/Block"));
 const Input = lazy(() => import("../../../common/Input"));
@@ -29,7 +30,7 @@ const ContactMessage = ({ title, content, id, t }) => {
   }
 
   const solveAction = (row) => {
-    axios.post('http://localhost:5000/messages/update', {
+    instanceApi.update('messages', {
       id: row.target.id
     }).then(res => {
       setResolvedAction(resolvedAction => !resolvedAction);

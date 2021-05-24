@@ -5,6 +5,7 @@ import {DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutli
 import React from "react";
 import {SidebarStyle} from "./styles";
 import RandomIcon from "../../common/Utilities/RandomIcon";
+import {Link} from 'react-router-dom';
 
 const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu, Item} = Menu;
@@ -14,10 +15,10 @@ const Sidebar = ({id, selectedMenu, setSelectedMenu, menu}) => {
     const renderSubItem = (sub, subId) => {
         return sub.map((item, id) => {
             return <Item key={subId+''+id}
-                         onClick={()=>{
-                             setSelectedMenu(item.url)
-                         }}
-            >{item.title}</Item>
+                         // onClick={()=>{
+                         //     setSelectedMenu(item)
+                         // }}
+            ><Link to={item.url}>{item.title}</Link></Item>
         })
     }
     const renderItem = menu.map((item, id) => {

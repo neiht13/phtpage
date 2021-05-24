@@ -5,6 +5,8 @@ import React, {lazy, useEffect, useMemo, useState} from "react";
 import {Container} from "./styles";
 import {AppProfile} from "../../common/Profile";
 import Sidebar from "../../components/Sidebar";
+import routes from "../../router/config";
+import {Route, Switch} from "react-router-dom";
 
 
 const {Header, Content, Footer, Sider} = Layout;
@@ -140,38 +142,39 @@ const SiderDemo = () => {
                 {
                     title: "Chân trang",
                     url: "footer",
+                    component: "FirstAdmin/Footer",
                 },
             ]
         },
     ]
 
-    useEffect(() => {
-        console.log(selectedMenu);
-        debugger;
-        switch (selectedMenu) {
-            case 'menu':
-                setContent( <MenuPage/>);
-                break;
-            case 'header':
-                setContent( <SystemPage/>);
-                break;
-            case 'footer':
-                setContent( <FooterPage/>);
-                break;
-            case 'account':
-                setContent( <MessagePage/>);
-                break;
-            case 'login':
-                setContent( <LoginPage/>);
-                break;
-            default:
-                setContent( <Empty description="Không có dữ liệu"/>)
-        }
-    },[selectedMenu]);
+    // useEffect(() => {
+    //     console.log(selectedMenu);
+    //     debugger;
+    //     switch (selectedMenu) {
+    //         case 'menu':
+    //             setContent( <MenuPage/>);
+    //             break;
+    //         case 'header':
+    //             setContent( <SystemPage/>);
+    //             break;
+    //         case 'footer':
+    //             setContent( <FooterPage/>);
+    //             break;
+    //         case 'account':
+    //             setContent( <MessagePage/>);
+    //             break;
+    //         case 'login':
+    //             setContent( <LoginPage/>);
+    //             break;
+    //         default:
+    //             setContent( <Empty description="Không có dữ liệu"/>)
+    //     }
+    // },[selectedMenu]);
 
     const sidebarr = useMemo(() => {
         return (
-            <Sidebar collapsed={collapsed} onCollapse={onCollapse} menu={menu} selectedMenu={selectedMenu} setSelectedMenu={setSelectedMenu}/>
+            <Sidebar collapsed={collapsed} onCollapse={onCollapse} menu={menu} setSelectedMenu={setSelectedMenu}/>
         )
     }, [selectedMenu]);
     return (
@@ -187,7 +190,15 @@ const SiderDemo = () => {
                         {/*    <Breadcrumb.Item>User</Breadcrumb.Item>*/}
                         {/*</Breadcrumb>*/}
                         <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
-                            {content}
+                            {selectedMenu && <Switch>
+                                <Route
+                                    key={selectedMenu.component}
+                                    path={selectedMenu.url}
+                                    component={lazy(() => import(`../${selectedMenu.component}`))}
+                                />
+
+                            </Switch>}
+
                         </div>
                     </Content>
                     <Footer>Powered by VNPT Đồng Tháp</Footer>

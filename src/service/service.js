@@ -16,7 +16,7 @@ const create = (model, modelObj) => {
     })
 };
 const update = (model, modelObj) => {
-    return instance.patch(model, modelObj).then(res => {
+    return instance.put(model, modelObj).then(res => {
         return res.data;
     })
 };

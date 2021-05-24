@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
     res.header("Content-Type", "application/json");
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
     res.header("Access-Control-Allow-Credentials", true);
     next();
 });
@@ -103,7 +103,7 @@ app.post('/messages/new', (req, res) => {
     });
 });
 
-app.post('/messages/update', (req, res) => {
+app.put('/api/messages', (req, res) => {
     const solveId = req.body && req.body.id;
     let sql = 'UPDATE contact_message SET resolved = 1 WHERE id = ' + solveId;
     connection.connect(function (err) {

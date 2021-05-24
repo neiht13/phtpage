@@ -20,6 +20,22 @@ const routes = [
     path: ["/login"],
     component: "Login",
   },
+  {
+    path: ["/footer"],
+    component: "FisrtAdmin/Footer",
+  },
+  {
+    path: ["/message"],
+    component: "FisrtAdmin/Message",
+  },
+  {
+    path: ["/menu"],
+    component: "FisrtAdmin/Menu",
+  },
+  {
+    path: ["/system"],
+    component: "FisrtAdmin/System",
+  },
 ];
 
 export default routes;

@@ -28,4 +28,7 @@ export const Table = styled.div`
       border-color: #005aaa;
     }
   }
+  .ant-table-thead > tr > th {
+    font-weight: bold !important;
+  }
 `;
