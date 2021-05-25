@@ -1,0 +1,122 @@
+{
+  "data": [
+    {
+      "title": "Quản trị tài khoản",
+      "url": "",
+      "sub": [
+        {
+          "title": "Tài khoản",
+          "url": "account"
+        },
+        {
+          "title": "Phân quyền",
+          "url": "role"
+        }
+      ]
+    },
+    {
+      "title": "Quản lý hệ thống",
+      "url": "",
+      "sub": [
+        {
+          "title": "Menu",
+          "url": "menu"
+        },
+
+        {
+          "title": "Phân quyền Menu",
+          "url": "menu_role"
+        }
+      ]
+    },
+    {
+      "title": "Quản lý danh mục bài viết",
+      "url": "",
+      "sub": [
+        {
+          "title": "Loại tin tức",
+          "url": "content"
+        },
+        {
+          "title": "Tin tức",
+          "url": ""
+        },
+        {
+          "title": "Hình ảnh",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "title": "Quản lý tham số cấu hình",
+      "url": "",
+      "sub": [
+        {
+          "title": "Mô tả",
+          "url": ""
+        },
+        {
+          "title": "Code",
+          "url": "",
+          "icon": ""
+        }
+      ]
+    },
+    {
+      "title": "Quản lý thông tin đơn vị",
+      "url": "",
+      "sub": [
+        {
+          "title": "Liên hệ",
+          "url": ""
+        },
+        {
+          "title": "Giới thiệu",
+          "url": ""
+
+        },
+        {
+          "title": "Địa điểm",
+          "url": ""
+
+        },
+        {
+          "title": "Email",
+          "url": "",
+          "icon": ""
+        },
+        {
+          "title": "Liên hệ",
+          "url": ""
+        },
+        {
+          "title": "Số điện thoại",
+          "url": ""
+        },
+        {
+          "title": "Banner",
+          "url": ""
+        },
+        {
+          "title": "Logo",
+          "url": ""
+        }
+      ]
+    },
+
+    {
+      "title": "Quản lý bố cục trang",
+      "url": "",
+      "sub": [
+        {
+          "title": "Đầu trang",
+          "url": "header"
+        },
+        {
+          "title": "Chân trang",
+          "url": "footer"
+        }
+      ]
+    }
+  ]
+}

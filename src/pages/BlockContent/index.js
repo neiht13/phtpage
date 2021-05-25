@@ -5,18 +5,18 @@ import { withTranslation } from "react-i18next";
 
 import axios from "axios";
 import * as CSS from "./styles";
-import removeVietnamese from "../../../common/Utilities/ConvertViString";
-import useForm from "../../../common/Form/useForm";
+import removeVietnamese from "../../common/Utilities/ConvertViString";
+import useForm from "../../common/Form/useForm";
 import {FileUpload} from "primereact/fileupload";
 import {SelectButton} from "primereact/selectbutton";
 import {MultiSelect} from "primereact/multiselect";
 import {Dropdown} from "primereact/dropdown";
 import {InputSwitch} from "primereact/inputswitch";
 
-const Block = lazy(() => import("../../../components/Block"));
-const Input = lazy(() => import("../../../common/Input"));
-const Button = lazy(() => import("../../../common/Button"));
-const TextArea = lazy(() => import("../../../common/TextArea"));
+const Block = lazy(() => import("../../components/Block"));
+const Input = lazy(() => import("../../common/Input"));
+const Button = lazy(() => import("../../common/Button"));
+const TextArea = lazy(() => import("../../common/TextArea"));
 
 const Contact = ({ title, content, id, t }) => {
   const { values, setValues, errors, handleChange, handleSubmit, shouldSubmit, setShouldSubmit, setUrlForm , isNew, setIsNew} = useForm();

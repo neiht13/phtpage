@@ -5,16 +5,16 @@ import {withTranslation} from "react-i18next";
 
 import axios from "axios";
 import * as CSS from "./styles";
-import removeVietnamese from "../../../common/Utilities/ConvertViString";
-import useForm from "../../../common/Form/useForm";
-import * as instanceApi from "./../../../service/service"
-import Notification from "../../../common/Form/Notification";
+import removeVietnamese from "../../common/Utilities/ConvertViString";
+import useForm from "../../common/Form/useForm";
+import * as instanceApi from "../../service/service"
+import Notification from "../../common/Form/Notification";
 
-const TableX = lazy(() => import("../../../common/Table"));
-const Block = lazy(() => import("../../../components/Block"));
-const Input = lazy(() => import("../../../common/Input"));
-const Button = lazy(() => import("../../../common/Button"));
-const TextArea = lazy(() => import("../../../common/TextArea"));
+const TableX = lazy(() => import("../../common/Table"));
+const Block = lazy(() => import("../../components/Block"));
+const Input = lazy(() => import("../../common/Input"));
+const Button = lazy(() => import("../../common/Button"));
+const TextArea = lazy(() => import("../../common/TextArea"));
 
 const Contact = ({title, content, id, t}) => {
     const {

@@ -11,11 +11,11 @@ import {Route, Switch} from "react-router-dom";
 
 const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu} = Menu;
-const LoginPage = lazy(() => import("./../../components/Login"));
-const MenuPage = lazy(() => import("./../FisrtAdmin/Menu"));
-const SystemPage = lazy(() => import("./../FisrtAdmin/System"));
-const MessagePage = lazy(() => import("./../FisrtAdmin/Message"));
-const FooterPage = lazy(() => import("./../FisrtAdmin/Footer"));
+const LoginPage = lazy(() => import("../Login"));
+const MenuPage = lazy(() => import("../Menu"));
+const SystemPage = lazy(() => import("../System"));
+const MessagePage = lazy(() => import("../Message"));
+const FooterPage = lazy(() => import("../Footer"));
 const CContainer = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 const SiderDemo = () => {
@@ -62,7 +62,7 @@ const SiderDemo = () => {
             sub: [
                 {
                     title: "Loại tin tức",
-                    url: ""
+                    url: "content"
                 },
                 {
                     title: "Tin tức",

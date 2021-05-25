@@ -32,9 +32,9 @@ export const AppProfile = ({setSelectedMenu}) => {
                 <div className="profile">
                     <Menu mode="inline">
                         <SubMenu key="sub1" icon={<Icon name="user-cog"/>} title="Phan Thien">
-                            <Menu.Item key="3">Account</Menu.Item>
+                            <Menu.Item key="3"><Link to={'auth'}>Account</Link></Menu.Item>
                             <Menu.Item key="4">Notifications</Menu.Item>
-                            <Menu.Item key="5"><Link to={'login'}>Logout</Link></Menu.Item>
+                            <Menu.Item key="5" onClick={() => localStorage.clear()}><Link to={'login'}>Logout</Link></Menu.Item>
                         </SubMenu>
                     </Menu>
                 </div>

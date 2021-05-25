@@ -17,24 +17,28 @@ const routes = [
     component: "Demo",
   },
   {
-    path: ["/login"],
-    component: "Login",
-  },
-  {
     path: ["/footer"],
-    component: "FisrtAdmin/Footer",
+    component: "Footer",
   },
   {
-    path: ["/message"],
-    component: "FisrtAdmin/Message",
+    path: ["/account"],
+    component: "Message",
   },
   {
     path: ["/menu"],
-    component: "FisrtAdmin/Menu",
+    component: "Menu",
   },
   {
     path: ["/system"],
-    component: "FisrtAdmin/System",
+    component: "System",
+  },
+  {
+    path: ["/content"],
+    component: "BlockContent",
+  },
+  {
+    path: ["/auth"],
+    component: "Login/auth.js",
   },
 ];
 

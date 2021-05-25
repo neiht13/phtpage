@@ -4,9 +4,10 @@ import {lazy} from "react";
 import Notification from "../../common/Form/Notification";
 const Button = lazy(() => import("../../common/Button"));
 
-const Demo = () => {
+const Login = () => {
     const onFinish = (values) => {
         console.log('Success:', values);
+        localStorage.setItem("userLogin", values.username)
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -36,7 +37,7 @@ const Demo = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your username!',
+                                message: 'Vui lòng nhập tên tài khoản!',
                             },
                         ]}
                     >
@@ -49,7 +50,7 @@ const Demo = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your password!',
+                                message: 'Vui lòng nhập mật khẩu!',
                             },
                         ]}
                     >
@@ -69,4 +70,4 @@ const Demo = () => {
     );
 };
 
-export default Demo;
+export default Login;
