@@ -1,7 +1,6 @@
 import {lazy, useEffect, useState} from "react";
 import {Row, Col, Form, Checkbox} from "antd";
 import Zoom from "react-reveal/Zoom";
-import {withTranslation} from "react-i18next";
 
 import axios from "axios";
 import * as CSS from "./styles";
@@ -16,7 +15,7 @@ const Input = lazy(() => import("../../common/Input"));
 const Button = lazy(() => import("../../common/Button"));
 const TextArea = lazy(() => import("../../common/TextArea"));
 
-const Contact = ({title, content, id, t}) => {
+const Menu = ({title, content, id, t}) => {
     const {
         values,
         setValues,
@@ -218,4 +217,4 @@ const Contact = ({title, content, id, t}) => {
     );
 };
 
-export default withTranslation()(Contact);
+export default Menu;

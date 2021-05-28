@@ -1,8 +1,4 @@
 import {lazy, useEffect, useState} from "react";
-import { Row, Col } from "antd";
-import Zoom from "react-reveal/Zoom";
-import { withTranslation } from "react-i18next";
-
 import axios from "axios";
 import * as CSS from "./styles";
 import removeVietnamese from "../../common/Utilities/ConvertViString";
@@ -15,7 +11,7 @@ const Input = lazy(() => import("../../common/Input"));
 const Button = lazy(() => import("../../common/Button"));
 const TextArea = lazy(() => import("../../common/TextArea"));
 
-const ContactMessage = ({ title, content, id, t }) => {
+const Message = ({ title, content, id, t }) => {
   const { values, setValues, errors, handleChange, handleSubmit, shouldSubmit, setShouldSubmit, setUrlForm } = useForm();
   const [messages, setMessages] = useState(null);
   const [resolvedAction, setResolvedAction] = useState(false);
@@ -82,4 +78,4 @@ const ContactMessage = ({ title, content, id, t }) => {
   );
 };
 
-export default withTranslation()(ContactMessage);
+export default Message;

@@ -70,13 +70,12 @@ const Contact = ({title, content, id, t}) => {
                 <Col span={4}>
                     <label>Màu sắc chủ đạo</label> &nbsp;&nbsp;&nbsp;
                 </Col> <Col>
-                <ColorPicker id="primary_color" value={values.primary_color} onChange={handleChange}/>
+                <ColorPicker id="primary_color" onChange={handleChange}/>
             </Col>
                 <Col span={6}>
                     <Input
                         type="text"
                         id="primary_color"
-                        value={values.primary_color}
                         onChange={handleChange}
                     />
                 </Col>
@@ -86,13 +85,12 @@ const Contact = ({title, content, id, t}) => {
                     <label>Màu sắc font chữ</label> &nbsp;&nbsp;&nbsp;
                 </Col>
                 <Col>
-                    <ColorPicker id="primary_font_color" value={values.primary_font_color} onChange={handleChange}/>
+                    <ColorPicker id="primary_font_color" onChange={handleChange}/>
                 </Col>
                 <Col span={6}>
                     <Input
                         type="text"
                         id="primary_font_color"
-                        value={values.primary_font_color}
                         onChange={handleChange}
                     />
                 </Col>
@@ -105,7 +103,6 @@ const Contact = ({title, content, id, t}) => {
                 <Col span={6}>
                     <Dropdown
                         id="primary_font"
-                        value={values.primary_font}
                         onChange={handleChange}
                         options={optionsFont}
                         itemTemplate={fontOptionTemplate}

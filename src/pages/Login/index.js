@@ -2,12 +2,16 @@ import {Form, Input, Checkbox, Card} from 'antd';
 import {LoginStyle} from "./styles";
 import {lazy} from "react";
 import Notification from "../../common/Form/Notification";
+import {useHistory} from "react-router-dom";
 const Button = lazy(() => import("../../common/Button"));
 
 const Login = () => {
+    const history = useHistory();
+
     const onFinish = (values) => {
         console.log('Success:', values);
-        localStorage.setItem("userLogin", values.username)
+        history.push("/");
+        localStorage.setItem("userLogin", JSON.stringify({username: values.username, role: values.remember ? 'admin' : 'user'}));
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -60,7 +64,6 @@ const Login = () => {
                     <Form.Item name="remember" valuePropName="checked">
                         <Checkbox>Remember me</Checkbox>
                     </Form.Item>
-
                     <Form.Item>
                         <Button type="submit">Submit</Button>
                     </Form.Item>

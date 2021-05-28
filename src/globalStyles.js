@@ -106,6 +106,9 @@ const Styles = createGlobalStyle`
     ::after {
       color: #005aaa;
     }
+    .site-layout-background {
+      background: #ffffff;
+    }
 `;
 
 export default Styles;

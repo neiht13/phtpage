@@ -33,6 +33,10 @@ export const Span = styled.span`
 
 export const Label = styled.label`
   color: #005aaa;
+  .avatar-uploader > .ant-upload {
+    width: 128px;
+    height: 128px;
+  }
 `;
 
 export const ButtonContainer = styled.div`

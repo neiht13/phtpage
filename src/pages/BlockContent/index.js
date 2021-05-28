@@ -1,5 +1,5 @@
-import {lazy, useEffect, useState} from "react";
-import {Row, Col, Table, Select} from "antd";
+import React, {lazy, useEffect, useState} from "react";
+import {Row, Col, Table, Select, Upload} from "antd";
 import Zoom from "react-reveal/Zoom";
 import { withTranslation } from "react-i18next";
 
@@ -22,6 +22,7 @@ const Contact = ({ title, content, id, t }) => {
   const { values, setValues, errors, handleChange, handleSubmit, shouldSubmit, setShouldSubmit, setUrlForm , isNew, setIsNew} = useForm();
   const [menuBar, setMenuBar] = useState(null);
   const [menuBarSelect, setMenuBarSelect] = useState(null);
+  const [photos, setPhotos] = useState(null);
   useEffect(() =>{
     fetchMenu();
     setUrlForm("http://localhost:5000/block-content/update");
@@ -64,6 +65,13 @@ const Contact = ({ title, content, id, t }) => {
     }).then(res => {
       fetchMenu()
     })
+  }
+  const uploadHandle = (data) => {
+    console.log(data)
+    axios.post('http://localhost:5000/upload', data.file)
+        .then((res) => {
+          setPhotos(res.data)
+        });
   }
 
   const editAction = (row) => {
@@ -291,15 +299,17 @@ const Contact = ({ title, content, id, t }) => {
                 <Col span={11}>
                   <div>Hình ảnh</div>
 
-                  <FileUpload
-                      id="image"
-                      value={values.image || ""}
-                      onChange={handleChange}
-                  />
+                  <Upload
+                      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                      listType="picture-card"
+                      onChange={uploadHandle}
+                  >
+                  </Upload>
                 </Col>
                 <Col span={11}>
                   <div>Hình nền</div>
-                  <FileUpload id="background"></FileUpload>
+                  <FileUpload id="background" onUpload={uploadHandle}/>
+                  {photos && photos[0] && <img src={`http://localhost:3000/upload/${photos[0].filename}`} alt={photos[0].filename}/>}
                 </Col>
               </Row>
               <hr/>
