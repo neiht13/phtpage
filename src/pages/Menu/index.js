@@ -109,6 +109,7 @@ const Menu = ({title, content, id, t}) => {
     ];
 
     const onFinish = (values) => {
+        console.log(values);
         instanceApi.create('menu_bar', values).then(data => {
             fetchMenu();
             Notification('success', 'Thành công', 'Thêm bản ghi thành công.');
@@ -176,41 +177,53 @@ const Menu = ({title, content, id, t}) => {
             {/*    </CSS.FormGroup>*/}
             {/*  </CSS.Label>*/}
             <div>
-            <Form
-                name="basic"
-                initialValues={{
-                    remember: false,
-                }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-            >
-                <Form.Item name="id">
-                            <Input
-                                type="text"
-                                name="ID"
-                                id="id"
+                <Form
+                    name="basic"
+                    initialValues={{
+                        remember: false,
+                    }}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                >
+                    <Row type="flex" justify="space-between" align="middle">
 
-                            />
-                </Form.Item>
-                <Form.Item name="name">
-                            <Input
-                                type="text"
-                                name="Name"
-                                id="name"
-                            />
-                </Form.Item>
-                <Form.Item name="value">
-                            <Input
-                                type="number"
-                                name="Value"
-                                id="name"
-                            />
-                </Form.Item>
+                        <Col span={8}>
 
-                <Form.Item>
-                    <Button type="submit">Submit</Button>
-                </Form.Item>
-            </Form>
+                            <Form.Item name="id">
+                                <Input
+                                    type="text"
+                                    name="ID"
+                                    id="id"
+
+                                />
+                            </Form.Item>
+                        </Col>
+                        <Col span={8}>
+
+                            <Form.Item name="name">
+                                <Input
+                                    type="text"
+                                    name="Name"
+                                    id="name"
+                                />
+                            </Form.Item>
+                        </Col>
+                        <Col span={8}>
+
+                            <Form.Item name="value">
+                                <Input
+                                    type="number"
+                                    name="Value"
+                                    id="name"
+                                />
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                    <Form.Item>
+                        <Button type="submit" position="flex-end">Submit</Button>
+                    </Form.Item>
+
+                </Form>
             </div>
             <TableX dataSource={menuBar} columns={columns}/>
         </div>

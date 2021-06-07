@@ -1,20 +1,31 @@
-import {Form, Input, Checkbox, Card} from 'antd';
+import {Form, Checkbox, Card} from 'antd';
 import {LoginStyle} from "./styles";
 import {lazy} from "react";
 import Notification from "../../common/Form/Notification";
 import {useHistory} from "react-router-dom";
+import Input from "../../common/Input";
+
 const Button = lazy(() => import("../../common/Button"));
 
 const Login = () => {
     const history = useHistory();
 
+    const onValuesChange = (values) => {
+        console.log('values change:', values);
+
+    };
+
     const onFinish = (values) => {
         console.log('Success:', values);
         history.push("/");
-        localStorage.setItem("userLogin", JSON.stringify({username: values.username, role: values.remember ? 'admin' : 'user'}));
+        localStorage.setItem("userLogin", JSON.stringify({
+            username: values.username,
+            role: values.remember ? 'admin' : 'user'
+        }));
     };
 
     const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
         console.log('Failed:', errorInfo.errorFields);
         if (errorInfo && errorInfo.errorFields) {
             errorInfo.errorFields.forEach(error => {
@@ -34,9 +45,9 @@ const Login = () => {
                     }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
+                    onValuesChange={onValuesChange}
                 >
                     <Form.Item
-                        label="Username"
                         name="username"
                         rules={[
                             {
@@ -45,11 +56,13 @@ const Login = () => {
                             },
                         ]}
                     >
-                        <Input/>
+                        <Input
+                            name="User"
+                            id="username"
+                        />
                     </Form.Item>
-
+                    <br/>
                     <Form.Item
-                        label="Password"
                         name="password"
                         rules={[
                             {
@@ -58,8 +71,13 @@ const Login = () => {
                             },
                         ]}
                     >
-                        <Input.Password/>
+                        <Input
+                            name="Password"
+                            id="password"
+                        />
                     </Form.Item>
+                    <br/>
+
 
                     <Form.Item name="remember" valuePropName="checked">
                         <Checkbox>Remember me</Checkbox>

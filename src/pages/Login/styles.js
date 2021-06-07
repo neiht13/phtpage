@@ -5,14 +5,14 @@ export const LoginStyle = styled.div`
   width: 40%;
   margin-left: 30%;
   .ant-input {
-    padding: 8px 16px;
-    border-radius: 5px;
+    padding: 6px 12px;
+    border-radius: 3px;
 
   }
 
   .ant-input-password {
-    padding: 8px 16px;
-    border-radius: 5px;
+    padding: 6px 12px;
+    border-radius: 3px;
   }
   .ant-checkbox-checked .ant-checkbox-inner {
     background-color: #005aaa;
@@ -32,5 +32,10 @@ export const LoginStyle = styled.div`
   }
   .ant-form-item-explain.ant-form-item-explain-error {
     color: tomato;
+  }
+  .ant-form-item-has-error {
+    input {
+      border-color: tomato !important;
+    }
   }
 `;

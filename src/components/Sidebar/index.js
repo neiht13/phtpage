@@ -35,7 +35,12 @@ const Sidebar = ({id, selectedMenu, setSelectedMenu, menu}) => {
 
     return (
         <SidebarStyle>
-            <Sider>
+            <Sider style={{
+                overflow: 'auto',
+                height: '100vh',
+                position: 'fixed',
+                left: 0,
+            }}>
                 <AppProfile setSelectedMenu={setSelectedMenu}/>
                 <Menu mode="inline">
                     {renderItem}

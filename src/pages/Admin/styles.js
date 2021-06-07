@@ -6,8 +6,11 @@ export const Container = styled.div`
     margin: 16px;
     background: rgba(255, 255, 255, 0.3);
   }
-  .site-layout .site-layout-background {
-    background: #ffffff;
+  .site-layout {
+    margin-left: 250px;
+    .site-layout-background {
+      background: #ffffff;
+    }
   }
   .ant-layout-header {
     margin-left: 16px;
