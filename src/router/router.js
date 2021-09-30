@@ -8,6 +8,7 @@ import {
 
 import Login from "./../pages/Login";
 import Photo from "./../pages/Test";
+import ShortURL from "./../pages/Url";
 const Message = lazy(() => import("./../pages/Message"));
 const Menu = lazy(() => import("./../pages/Menu"));
 
@@ -16,16 +17,17 @@ const BlockContent = lazy(() => import("./../pages/BlockContent"));
 const Footer = lazy(() => import("./../pages/Footer"));
 const Home = lazy(() => import("./../pages/Home"));
 const NotFound = lazy(() => import("./../pages/NotFound"));
+const NewsType = lazy(() => import("./../pages/NewsType"));
 
 const authUser = (Component, role) => () => {
     const user = JSON.parse(localStorage.getItem("userLogin"));
     console.log('role', role);
-    return user && user.role === role  ? (
-        <Component/>
-    ) : (
-        <Redirect to="/login" />
-    );
-
+    // return user && user.role === role  ? (
+    //     <Component/>
+    // ) : (
+    //     <Redirect to="/login" />
+    // );
+    return <Component/>
 };
 const Routes = () => (
     <Switch>
@@ -38,7 +40,9 @@ const Routes = () => (
         <Route path="/account" component={authUser(System, 'admin')}/>
         <Route path="/content" component={authUser(BlockContent, 'user')}/>
         <Route path="/footer" component={authUser(Footer, 'user')}/>
+        <Route path="/news-type" component={authUser(NewsType, 'user')}/>
         <Route path="/photo" component={Photo}/>
+        <Route path="/url" component={ShortURL}/>
         <Route path="*" component={NotFound}/>
     </Switch>
 );

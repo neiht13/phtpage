@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
     res.header("Content-Type", "application/json");
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    res.header("Access-Control-Allow-Methods", "*");
     res.header("Access-Control-Allow-Credentials", true);
     next();
 });
@@ -39,7 +39,7 @@ app.get('/api/menu_bar', function (req, res) {
     });
 });
 
-app.post('/api/menu_bar', (req, res) => {
+app.post('/api/menu_bar/new', (req, res) => {
     console.log("new menu" + req.body);
     const menu = req.body;
     let sql = 'insert into menu_bar(id, name, value) ' +
@@ -59,9 +59,10 @@ app.post('/api/menu_bar', (req, res) => {
     });
 });
 
-app.post('/menu_bar/delete', (req, res) => {
-    const item = req.body;
-    let sqlDelete = `delete from menu_bar where id like '` + item.id + `'` ;
+app.delete('/api/menu_bar/delete/:id', (req, res) => {
+    const itemId = req.params.id;
+    console.log(req);
+    let sqlDelete = `delete from menu_bar where id like '` + itemId + `'` ;
     connection.connect(function (err) {
         connection.query(sqlDelete, function (err, recordset) {
           if (err) res.send(recordset);
@@ -69,10 +70,11 @@ app.post('/menu_bar/delete', (req, res) => {
         });
     });
 });
-app.post('/menu_bar/update', (req, res) => {
+
+app.put('/api/news/update', (req, res) => {
     console.log("new menu" + req.body);
     const menu = req.body;
-    let sql = `UPDATE menu_bar SET name = '${menu.name}', value = ${menu.value} WHERE id = '${menu.id}'`;
+    let sql = `UPDATE menu_bar SET name = '${menu.newsType}', value = ${menu.value} WHERE id = '${menu.id}'`;
     connection.connect(function (err) {
         connection.query(sql, function (err, recordset) {
           if (err) {

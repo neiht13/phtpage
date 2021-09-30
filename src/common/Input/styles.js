@@ -20,9 +20,11 @@ export const Container = styled.div`
 
 export const Input = styled.input`
   width: 100%;
+  max-width: 369px;
+  min-width: 234px;
   border-width: 1px;
   border-style: solid;
-  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-color: ${(props) => props.hasError ? "tomato" : '-internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133))'};
   outline: none;
   font-size: 0.875rem;
   padding: 0.6rem 15px;
@@ -36,7 +38,9 @@ export const Input = styled.input`
     border-color: #005aaa;
   }
   
-`;export const TextArea = styled.input`
+`;
+
+export const TextArea = styled.input`
   width: 100%;
   border-width: 1px;
   border-style: solid;
@@ -53,4 +57,9 @@ export const Input = styled.input`
   &:hover {
     border-color: #005aaa;
   }
+`;
+export const ErrorMessage = styled.div`
+  color: tomato;
+  font-size: 12px;
+  opacity: 88%;
 `;

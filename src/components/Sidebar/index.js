@@ -2,7 +2,7 @@ import * as CSS from "./styles";
 import {AppProfile} from "../../common/Profile";
 import {Layout, Menu} from "antd";
 import {DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
-import React from "react";
+import React, {useState} from "react";
 import {SidebarStyle} from "./styles";
 import RandomIcon from "../../common/Utilities/RandomIcon";
 import {Link} from 'react-router-dom';
@@ -12,6 +12,7 @@ const {SubMenu, Item} = Menu;
 
 const Sidebar = ({id, selectedMenu, setSelectedMenu, menu}) => {
 
+    const [openMenu, setOpenMenu] = useState();
     const renderSubItem = (sub, subId) => {
         return sub.map((item, id) => {
             return <Item key={subId+''+id}
@@ -28,8 +29,9 @@ const Sidebar = ({id, selectedMenu, setSelectedMenu, menu}) => {
             </SubMenu>
         );
     });
-    const gotoLogin = () => {
-
+    const onOpenChange = (e) => {
+        console.log(e)
+        setOpenMenu(e[e.length -1]);
     }
 
 
@@ -42,7 +44,11 @@ const Sidebar = ({id, selectedMenu, setSelectedMenu, menu}) => {
                 left: 0,
             }}>
                 <AppProfile setSelectedMenu={setSelectedMenu}/>
-                <Menu mode="inline">
+                <Menu
+                    defaultOpenKeys={[openMenu]}
+                    onOpenChange={onOpenChange}
+                    mode="inline">
+
                     {renderItem}
                 </Menu>
             </Sider>

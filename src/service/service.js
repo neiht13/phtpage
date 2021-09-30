@@ -11,18 +11,19 @@ const fetch = (model) => {
 }
 
 const create = (model, modelObj) => {
-    return instance.post(model, modelObj).then(res => {
+    return instance.post(`${model}/new`, modelObj).then(res => {
         return res.data;
     })
 };
 const update = (model, modelObj) => {
-    return instance.put(model, modelObj).then(res => {
+    debugger;
+    return instance.put(`${model}/update`, modelObj).then(res => {
         return res.data;
     })
 };
 
-const remove = (model, modelObj) => {
-    return instance.delete(model, modelObj).then(res => {
+const remove = (model, id) => {
+    return instance.delete(`${model}/delete/${id}`).then(res => {
         return res.data;
     })
 }

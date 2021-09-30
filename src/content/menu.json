@@ -35,7 +35,7 @@
       "sub": [
         {
           "title": "Loại tin tức",
-          "url": "content"
+          "url": "/news-type"
         },
         {
           "title": "Tin tức",
