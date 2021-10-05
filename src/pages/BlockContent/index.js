@@ -1,17 +1,10 @@
 import React, {lazy, useEffect, useState} from "react";
 import {Row, Col, Table, Select, Upload} from "antd";
-import Zoom from "react-reveal/Zoom";
-import { withTranslation } from "react-i18next";
 
 import axios from "axios";
 import * as CSS from "./styles";
 import removeVietnamese from "../../common/Utilities/ConvertViString";
 import useForm from "../../common/Form/useForm";
-import {FileUpload} from "primereact/fileupload";
-import {SelectButton} from "primereact/selectbutton";
-import {MultiSelect} from "primereact/multiselect";
-import {Dropdown} from "primereact/dropdown";
-import {InputSwitch} from "primereact/inputswitch";
 
 const Block = lazy(() => import("../../components/Block"));
 const Input = lazy(() => import("../../common/Input"));

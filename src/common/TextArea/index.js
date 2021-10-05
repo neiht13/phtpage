@@ -1,4 +1,3 @@
-import { withTranslation } from "react-i18next";
 
 import * as CSS from "./styles";
 

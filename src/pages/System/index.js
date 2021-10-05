@@ -1,14 +1,10 @@
 import {lazy, useEffect, useState} from "react";
 import {Row, Col} from "antd";
-import Zoom from "react-reveal/Zoom";
-import {withTranslation} from "react-i18next";
 
 import axios from "axios";
 import * as CSS from "./styles";
 import removeVietnamese from "../../common/Utilities/ConvertViString";
 import useForm from "../../common/Form/useForm";
-import {ColorPicker} from "primereact/colorpicker";
-import {Dropdown} from "primereact/dropdown";
 
 
 const TableX = lazy(() => import("../../common/Table"));
@@ -70,7 +66,6 @@ const Contact = ({title, content, id, t}) => {
                 <Col span={4}>
                     <label>Màu sắc chủ đạo</label> &nbsp;&nbsp;&nbsp;
                 </Col> <Col>
-                <ColorPicker id="primary_color" onChange={handleChange}/>
             </Col>
                 <Col span={6}>
                     <Input
@@ -85,7 +80,6 @@ const Contact = ({title, content, id, t}) => {
                     <label>Màu sắc font chữ</label> &nbsp;&nbsp;&nbsp;
                 </Col>
                 <Col>
-                    <ColorPicker id="primary_font_color" onChange={handleChange}/>
                 </Col>
                 <Col span={6}>
                     <Input
@@ -101,12 +95,7 @@ const Contact = ({title, content, id, t}) => {
                     <label>Font chữ</label> &nbsp;&nbsp;&nbsp;
                 </Col>
                 <Col span={6}>
-                    <Dropdown
-                        id="primary_font"
-                        onChange={handleChange}
-                        options={optionsFont}
-                        itemTemplate={fontOptionTemplate}
-                    />
+
                 </Col>
             </Row>
             <CSS.ButtonContainer>
@@ -121,4 +110,4 @@ const Contact = ({title, content, id, t}) => {
     );
 };
 
-export default withTranslation()(Contact);
+export default (Contact);

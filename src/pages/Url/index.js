@@ -1,24 +1,47 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import 'antd/dist/antd.css';
-import {Upload, Modal, Card, Form, Checkbox, Row} from 'antd';
+import {Upload, Modal, Card, Form, Checkbox, Row, Col} from 'antd';
 import {lazy} from "react";
 import Input from "../../common/Input";
-import QRCode from "qrcode.react";
+import QRCode from "../../common/Utilities/QR/qr";
 import Notification from "../../common/Form/Notification";
 
 const Button = lazy(() => import("../../common/Button"));
 
 const ShortURL = () => {
-    const logoDefault = "https://vnpt.com.vn/Design/images/logo-vnpt-app.jpg";
+    const logoDefault = "img/images/logo_vnpt_2.png";
     const [url, setUrl] = useState("");
     const [logo, setLogo] = useState("");
+    const [color, setColor] = useState(false);
+    const [qr, setQr] = useState("");
     const onValuesChange = (values) => {
     };
+    const downloadQR = () => {
+        const canvas = document.getElementsByTagName("canvas")[0];
 
+        if (canvas) {
+            const pngUrl = canvas
+                .toDataURL("image/png")
+                .replace("image/png", "image/octet-stream");
+
+            const downloadLink = document.createElement("a");
+            downloadLink.href = pngUrl;
+            downloadLink.download = "qr.png";
+
+            document.body.appendChild(downloadLink);
+
+            downloadLink.click();
+
+            document.body.removeChild(downloadLink);
+        } else {
+            console.log("Could not find QR code element");
+        }
+    };
     const onFinish = (values) => {
         console.log('values change:', values);
         setUrl(values.url);
         setLogo(values.logo ? values.logo : logoDefault);
+        setColor(values.basic);
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -27,6 +50,7 @@ const ShortURL = () => {
     return (
         <div>
             <Row>
+                <Col span={8}>
                 <Card>
                     <Form
                         name="basic"
@@ -72,21 +96,23 @@ const ShortURL = () => {
                         <br/>
 
 
-                        <Form.Item name="remember" valuePropName="checked">
-                            <Checkbox>Remember me</Checkbox>
+                        <Form.Item name="basic" valuePropName="checked">
+                            <Checkbox>Basic default</Checkbox>
                         </Form.Item>
                         <Form.Item>
                             <Button type="submit">Submit</Button>
                         </Form.Item>
                     </Form>
                 </Card>
+                </Col>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div id='qrcode'>
                 <QRCode
                     value={url}
                     size={300}
                     bgColor={"#ffffff"}
                     fgColor={"#005aaa"}
-                    level={"L"}
+                    level={"Q"}
                     includeMargin={false}
                     renderAs={"canvas"}
                     imageSettings={{
@@ -98,6 +124,8 @@ const ShortURL = () => {
                         excavate: true,
                     }}
                 />
+                    <Button onClick={downloadQR}>Download</Button>
+                </div>
             </Row>
             <div>
 
