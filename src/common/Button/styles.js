@@ -14,7 +14,7 @@ export const Button = styled.button`
   margin-top: 0.625rem;
   box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0px rgb(0 0 0 / 14%), 0 1px 5px 0px rgb(0 0 0 / 12%);
 
-  max-width: ${(props) => props.size === 'small' ? "100px" : "150px" };
+  max-width: ${(props) => props.width  ? props.width : "150px" };
 
   @media only screen and (max-width: 1024px) {
     width: ${(props) => (props.width ? '160px' : '100%')};

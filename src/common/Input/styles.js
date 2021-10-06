@@ -19,7 +19,7 @@ export const Container = styled.div`
 `;
 
 export const Input = styled.input`
-  width: 100%;
+  width: ${(props) => props.width ? props.width : "100%"};
   max-width: 369px;
   min-width: 234px;
   border-width: 1px;

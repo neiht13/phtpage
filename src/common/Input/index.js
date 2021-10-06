@@ -3,7 +3,7 @@ import * as CSS from "./styles";
 import {Col} from "antd";
 import {ErrorMessage} from "./styles";
 
-const Input = ({ id, name, placeholder, onChange, label, errorMessage, disabled, type, value, alt, readonly, required, hasError  }) =>
+const Input = ({ id, name, placeholder, onChange, label, errorMessage, disabled, type, value, alt, readonly, required, hasError, width  }) =>
 {
   if(type==='area'){
     return (
@@ -36,6 +36,7 @@ const Input = ({ id, name, placeholder, onChange, label, errorMessage, disabled,
               name={name}
               id={id}
               required={required}
+              width={width}
               disabled={disabled}
               readonly={readonly}
               onChange={onChange}

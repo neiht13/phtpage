@@ -59,6 +59,7 @@ const Login = () => {
                         <Input
                             name="User"
                             id="username"
+                            label="Username"
                         />
                     </Form.Item>
                     <br/>
@@ -73,6 +74,7 @@ const Login = () => {
                     >
                         <Input
                             name="Password"
+                            label="Password"
                             id="password"
                         />
                     </Form.Item>
