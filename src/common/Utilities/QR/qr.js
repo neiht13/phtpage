@@ -344,8 +344,8 @@ var QRCodeCanvas =
                         row.forEach(function (cell, X) {
                             if (cell) {
                                 // ctx.fillRect(cdx + margin, rdx + margin, 1, 1);
-                                ctx.moveTo(X * 2*radius, Y * 2*radius);
-                                ctx.arc(X * 2*radius + radius, Y * 2*radius + radius, radius, 0, Math.PI * 2, true);
+                                ctx.moveTo(X + margin, Y  + margin);
+                                ctx.arc(X + radius + margin, Y + radius + margin, radius, 0, Math.PI * 2, true);
                                 // ctx.moveTo(X , Y);
                                 // if (img) {
                                 //     ctx.drawImage(img,X,Y,1,1)

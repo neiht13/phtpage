@@ -8,16 +8,24 @@ import Notification from "../../common/Form/Notification";
 import RandomString from "../../common/Utilities/RandomString";
 
 const Button = lazy(() => import("../../common/Button"));
-// const Checkbox = import("../../common/Checkbox");
-
+import {CheckboxStyle} from "../../common/Checkbox/styles";
+import * as CSS from "./style";
+import {Card2} from "./style";
+import {getCities} from "../../service/firebase";
 const ShortURL = () => {
+    useEffect(() => {
+        getCities();
+    }, [])// similar to componentDidMount
+
     const logoDefault = "img/images/logo_vnpt_2.png";
     const [url, setUrl] = useState("");
     const [shortUrl, setShortUrl] = useState();
+    const [randomString, setRandomString] = useState();
     const [logo, setLogo] = useState("");
     const [colorDefault, setColorDefault] = useState(false);
     const [noLogo, setNoLogo] = useState("");
     const [shortChange, setShortChange] = useState(false);
+    const [includeMargin, setIncludeMargin] = useState(false);
     const onValuesChange = (values) => {
         console.log(values)
     };
@@ -31,7 +39,7 @@ const ShortURL = () => {
 
             const downloadLink = document.createElement("a");
             downloadLink.href = pngUrl;
-            downloadLink.download = "qr.png";
+            downloadLink.download = randomString + ".png";
 
             document.body.appendChild(downloadLink);
 
@@ -44,7 +52,7 @@ const ShortURL = () => {
     };
     const shortUrlAction = () => {
         const baseURL = "https://url.vnptdongthap.com.vn/"
-        let randomString = RandomString(8);
+        setRandomString(RandomString(8));
         setShortUrl(baseURL + randomString);
     }
 
@@ -54,6 +62,7 @@ const ShortURL = () => {
         navigator.clipboard.writeText(copyText.value);
         alert("Copied the text: " + copyText.value);
     }
+
     function shortChangeAction(e) {
         setShortChange(true);
         setShortUrl(e && e.value && e.value.target);
@@ -67,6 +76,7 @@ const ShortURL = () => {
         setNoLogo(values.nologo);
         shortUrlAction();
         setShortChange(false);
+        setIncludeMargin(values.margin);
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -76,6 +86,7 @@ const ShortURL = () => {
         <div>
             <Row justify="space-between">
                 <Col span={8}>
+                    <CSS.Card>
                     <Card>
                         <Form
                             name="basic"
@@ -120,20 +131,24 @@ const ShortURL = () => {
                             </Form.Item>
                             <br/>
 
-                            <Row justify="space-between">
+                            <Row justify="space-between" wrap={false}>
                                 <Form.Item name="basic" valuePropName="checked">
-                                    <Checkbox>Basic Color</Checkbox>
+                                    <CheckboxStyle><Checkbox>Màu cơ bản</Checkbox></CheckboxStyle>
                                 </Form.Item>
                                 <Form.Item name="nologo" valuePropName="checked">
-                                    <Checkbox>Hidden Logo</Checkbox>
+                                    <CheckboxStyle><Checkbox>Ẩn logo</Checkbox></CheckboxStyle>
                                 </Form.Item>
-                                <div/>
+                                <Form.Item name="margin" valuePropName="checked">
+                                    <CheckboxStyle><Checkbox>Viền</Checkbox></CheckboxStyle>
+                                </Form.Item>
+
                             </Row>
                             <Form.Item>
                                 <Button type="submit">Submit</Button>
                             </Form.Item>
                         </Form>
                     </Card>
+                    </CSS.Card>
                 </Col>
                 <Col span={12}>
                     <Row wrap={false}>
@@ -154,23 +169,27 @@ const ShortURL = () => {
                         <Button width='100px' onClick={copyAction}>Copy</Button>
                     </Row>
                     <Row>
-                        <QRCode
-                            value={url}
-                            size={200}
-                            bgColor={"#ffffff"}
-                            fgColor={colorDefault ? "#000000" : "#005aaa"}
-                            level={"H"}
-                            includeMargin={false}
-                            renderAs={"canvas"}
-                            imageSettings={!noLogo && {
-                                src: logo,
-                                x: null,
-                                y: null,
-                                height: 40,
-                                width: 40,
-                                excavate: true,
-                            }}
-                        />
+                        <CSS.Card2>
+                            <Card>
+                            <QRCode
+                                value={url}
+                                size={200}
+                                bgColor={"#ffffff"}
+                                fgColor={colorDefault ? "#000000" : "#005aaa"}
+                                level={"Q"}
+                                includeMargin={includeMargin}
+                                renderAs={"canvas"}
+                                imageSettings={!noLogo && {
+                                    src: logo,
+                                    x: null,
+                                    y: null,
+                                    height: 40,
+                                    width: 40,
+                                    excavate: true,
+                                }}
+                            />
+                            </Card>
+                        </CSS.Card2>
                     </Row>
                     <Button width="200px" onClick={downloadQR}>Download</Button>
                 </Col>

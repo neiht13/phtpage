@@ -32,7 +32,7 @@ const authUser = (Component, role) => () => {
 const Routes = () => (
     <Switch>
         <Route exact path="/" component={Home}>
-            <Redirect to="/home" />
+            <Redirect to="/url" />
         </Route>
         <Route path="/login"><Login/></Route>
         <Route path="/message" component={authUser(Message, 'user')}/>
