@@ -1,7 +1,6 @@
 import * as CSS from "./styles";
 import {AppProfile} from "../../common/Profile";
 import {Layout, Menu} from "antd";
-import {DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
 import React, {useState} from "react";
 import {SidebarStyle} from "./styles";
 import RandomIcon from "../../common/Utilities/RandomIcon";
@@ -37,12 +36,16 @@ const Sidebar = ({id, selectedMenu, setSelectedMenu, menu}) => {
 
     return (
         <SidebarStyle>
-            <Sider style={{
-                overflow: 'auto',
-                height: '100vh',
-                position: 'fixed',
-                left: 0,
-            }}>
+            <Sider
+                breakpoint="lg"
+                collapsedWidth="0"
+                onBreakpoint={broken => {
+                    console.log(broken);
+                }}
+                onCollapse={(collapsed, type) => {
+                    console.log(collapsed, type);
+                }}
+            >
                 <AppProfile setSelectedMenu={setSelectedMenu}/>
                 <Menu
                     defaultOpenKeys={[openMenu]}

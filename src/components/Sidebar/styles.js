@@ -2,10 +2,7 @@ import styled from 'styled-components';
 
 export const SidebarStyle = styled.div`
     .ant-layout-sider {
-      flex: 0 0 250px !important;
       max-width: 250px !important;
-      min-width: 250px !important;
-      width: 250px !important;
     }
     .ant-menu-submenu-arrow {
       color: #005aaa !important;

@@ -7,7 +7,6 @@ export const Container = styled.div`
     background: rgba(255, 255, 255, 0.3);
   }
   .site-layout {
-    margin-left: 250px;
     .site-layout-background {
       background: #ffffff;
     }

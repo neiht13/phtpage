@@ -10,12 +10,15 @@ import RandomString from "../../common/Utilities/RandomString";
 const Button = lazy(() => import("../../common/Button"));
 import {CheckboxStyle} from "../../common/Checkbox/styles";
 import * as CSS from "./style";
-import {Card2} from "./style";
-import {getCities} from "../../service/firebase";
+const {getCities} = require("../../service/firebase-server");
 const ShortURL = () => {
-    useEffect(() => {
-        getCities();
-    }, [])// similar to componentDidMount
+    const getData = () => {
+        getCities().then(result => {
+            console.log('data:', result[0]);
+        });
+    };
+
+
 
     const logoDefault = "img/images/logo_vnpt_2.png";
     const [url, setUrl] = useState("");
@@ -69,6 +72,7 @@ const ShortURL = () => {
     }
 
     const onFinish = (values) => {
+        getData();
         console.log('values change:', values);
         setUrl(values.url);
         setLogo(values.logo ? values.logo : logoDefault);
@@ -169,22 +173,22 @@ const ShortURL = () => {
                         <Button width='100px' onClick={copyAction}>Copy</Button>
                     </Row>
                     <Row>
-                        <CSS.Card2>
+                        <CSS.Card2 onClick={downloadQR}>
                             <Card>
                             <QRCode
                                 value={url}
-                                size={200}
+                                size={300}
                                 bgColor={"#ffffff"}
                                 fgColor={colorDefault ? "#000000" : "#005aaa"}
-                                level={"Q"}
+                                level={"H"}
                                 includeMargin={includeMargin}
                                 renderAs={"canvas"}
                                 imageSettings={!noLogo && {
                                     src: logo,
                                     x: null,
                                     y: null,
-                                    height: 40,
-                                    width: 40,
+                                    height: 50,
+                                    width: 50,
                                     excavate: true,
                                 }}
                             />

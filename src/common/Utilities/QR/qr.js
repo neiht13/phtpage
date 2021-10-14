@@ -100,7 +100,7 @@ var PROP_TYPES = process.env.NODE_ENV !== 'production' ? {
         y: PropTypes.number
     })
 } : {};
-var MARGIN_SIZE = 4; // This is *very* rough estimate of max amount of QRCode allowed to be covered.
+var MARGIN_SIZE = 2; // This is *very* rough estimate of max amount of QRCode allowed to be covered.
 // It is "wrong" in a lot of ways (area is a terrible way to estimate, it
 // really should be number of modules covered), but if for some reason we don't
 // get an explicit height or width, I'd rather default to something than throw.
@@ -346,6 +346,7 @@ var QRCodeCanvas =
                                 // ctx.fillRect(cdx + margin, rdx + margin, 1, 1);
                                 ctx.moveTo(X + margin, Y  + margin);
                                 ctx.arc(X + radius + margin, Y + radius + margin, radius, 0, Math.PI * 2, true);
+                                if (row[X+1]) ctx.fillRect(X+radius,Y,1,1);
                                 // ctx.moveTo(X , Y);
                                 // if (img) {
                                 //     ctx.drawImage(img,X,Y,1,1)

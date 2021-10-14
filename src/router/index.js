@@ -16,7 +16,7 @@ const Router = () => {
       <GlobalStyles primaryFont="Helvetica" primaryColor="#005aaa"/>
         <Layout style={{minHeight: '100vh'}}>
             <Sidebar menu={Menu.data}/>
-            <Layout className="site-layout" style={{marginLeft: '250px'}}>
+            <Layout className="site-layout">
                 <Header className="site-layout-background" style={{padding: 0, margin: "0 0 16px 16px"}}/>
                 <Content style={{margin: '0 16px'}}>
                     <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
