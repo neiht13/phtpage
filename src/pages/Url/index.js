@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import 'antd/dist/antd.css';
-import {Upload, Modal, Card, Form, Checkbox, Row, Col} from 'antd';
+import {Upload, Modal, Card, Form, Checkbox, Row, Col, Radio} from 'antd';
 import {lazy} from "react";
 import Input from "../../common/Input";
 import QRCode from "../../common/Utilities/QR/qr";
@@ -28,7 +28,8 @@ const ShortURL = () => {
     const [colorDefault, setColorDefault] = useState(false);
     const [noLogo, setNoLogo] = useState("");
     const [shortChange, setShortChange] = useState(false);
-    const [includeMargin, setIncludeMargin] = useState(false);
+    const [includeMargin, setIncludeMargin] = useState(true);
+    const [qrStyle, setQrStyle] = useState('vnpt');
     const onValuesChange = (values) => {
         console.log(values)
     };
@@ -143,8 +144,16 @@ const ShortURL = () => {
                                     <CheckboxStyle><Checkbox>Ẩn logo</Checkbox></CheckboxStyle>
                                 </Form.Item>
                                 <Form.Item name="margin" valuePropName="checked">
-                                    <CheckboxStyle><Checkbox>Viền</Checkbox></CheckboxStyle>
+                                    <CheckboxStyle><Checkbox checked={includeMargin} onChange={e =>setIncludeMargin(!includeMargin)}>Viền</Checkbox></CheckboxStyle>
                                 </Form.Item>
+
+                            </Row>
+                            <Row justify="space-between" wrap={false}>
+                                <Radio.Group onChange={e=> setQrStyle(e.target.value)} value={qrStyle}>
+                                    <Radio value="basic">Cơ bản</Radio>
+                                    <Radio value="circle">Chấm tròn</Radio>
+                                    <Radio value="vnpt">VNPT</Radio>
+                                </Radio.Group>
 
                             </Row>
                             <Form.Item>
@@ -177,18 +186,19 @@ const ShortURL = () => {
                             <Card>
                             <QRCode
                                 value={url}
-                                size={300}
+                                size={500}
                                 bgColor={"#ffffff"}
                                 fgColor={colorDefault ? "#000000" : "#005aaa"}
                                 level={"H"}
+                                qrStyle={qrStyle}
                                 includeMargin={includeMargin}
                                 renderAs={"canvas"}
                                 imageSettings={!noLogo && {
                                     src: logo,
                                     x: null,
                                     y: null,
-                                    height: 50,
-                                    width: 50,
+                                    height: 100,
+                                    width: 100,
                                     excavate: true,
                                 }}
                             />
