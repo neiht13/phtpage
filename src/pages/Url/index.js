@@ -19,12 +19,12 @@ const ShortURL = () => {
     };
 
 
-
+    const baseURL = "https://url.vnptdongthap.com.vn/"
     const logoDefault = "img/images/logo_vnpt_2.png";
     const [url, setUrl] = useState("");
     const [shortUrl, setShortUrl] = useState();
     const [randomString, setRandomString] = useState();
-    const [logo, setLogo] = useState("");
+    const [logo, setLogo] = useState(logoDefault);
     const [colorDefault, setColorDefault] = useState(false);
     const [noLogo, setNoLogo] = useState("");
     const [shortChange, setShortChange] = useState(false);
@@ -55,7 +55,6 @@ const ShortURL = () => {
         }
     };
     const shortUrlAction = () => {
-        const baseURL = "https://url.vnptdongthap.com.vn/"
         setRandomString(RandomString(8));
         setShortUrl(baseURL + randomString);
     }
@@ -150,9 +149,9 @@ const ShortURL = () => {
                             </Row>
                             <Row justify="space-between" wrap={false}>
                                 <Radio.Group onChange={e=> setQrStyle(e.target.value)} value={qrStyle}>
-                                    <Radio value="basic">Cơ bản</Radio>
-                                    <Radio value="circle">Chấm tròn</Radio>
-                                    <Radio value="vnpt">VNPT</Radio>
+                                    <Radio.Button value="basic">Cơ bản</Radio.Button>
+                                    <Radio.Button value="circle">Chấm tròn</Radio.Button>
+                                    <Radio.Button value="vnpt">VNPT</Radio.Button>
                                 </Radio.Group>
 
                             </Row>
@@ -185,7 +184,7 @@ const ShortURL = () => {
                         <CSS.Card2 onClick={downloadQR}>
                             <Card>
                             <QRCode
-                                value={url}
+                                value={baseURL}
                                 size={500}
                                 bgColor={"#ffffff"}
                                 fgColor={colorDefault ? "#000000" : "#005aaa"}
