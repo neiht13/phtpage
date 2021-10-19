@@ -47,72 +47,72 @@ const Styles = createGlobalStyle`
   h1 {
     font-weight: 600;
   }
-
-  hr {
-    border-top: solid 1px #005aaa;
-  }
-
-  a {
-    text-decoration: none;
-    outline: none;
-    color: #005aaa;
-
-    :hover {
-      color: #005aaa;
-    }
-  }
-
-  i {
-    color: #005aaa;
-  }
-
-  input {
-    :focus,
-    :hover {
-      border-color: #005aaa !important;
-    }
-  }
-
-
-  .about-block-image svg {
-    text-align: center;
-  }
-
-  .ant-drawer-body {
-    display: flex;
-    flex-direction: column;
-    padding: 1.25rem;
-    text-align: left;
-    padding-top: 2.5rem;
-    padding-right: 2rem;
-  }
-
-  span {
-    font-family: Helvetica, sans-serif;
-
-    :focus,
-    :hover {
-      border-color: #005aaa !important;
-    }
-  }
-
-  header {
-    color: #005aaa !important;
-    font-family: Helvetica, sans-serif;
-  }
-
-  footer {
-    color: #005aaa !important;
-    font-family: Helvetica, sans-serif;
-  }
-
-  .anticon {
-    color: #005aaa !important;
-  }
-
-  ::after {
-    color: #005aaa;
-  }
+  //
+  //hr {
+  //  border-top: solid 1px #005aaa;
+  //}
+  //
+  //a {
+  //  text-decoration: none;
+  //  outline: none;
+  //  color: #005aaa;
+  //
+  //  :hover {
+  //    color: #005aaa;
+  //  }
+  //}
+  //
+  //i {
+  //  color: #005aaa;
+  //}
+  //
+  //input {
+  //  :focus,
+  //  :hover {
+  //    border-color: #005aaa !important;
+  //  }
+  //}
+  //
+  //
+  //.about-block-image svg {
+  //  text-align: center;
+  //}
+  //
+  //.ant-drawer-body {
+  //  display: flex;
+  //  flex-direction: column;
+  //  padding: 1.25rem;
+  //  text-align: left;
+  //  padding-top: 2.5rem;
+  //  padding-right: 2rem;
+  //}
+  //
+  //span {
+  //  font-family: Helvetica, sans-serif;
+  //
+  //  :focus,
+  //  :hover {
+  //    border-color: #005aaa !important;
+  //  }
+  //}
+  //
+  //header {
+  //  color: #005aaa !important;
+  //  font-family: Helvetica, sans-serif;
+  //}
+  //
+  //footer {
+  //  color: #005aaa !important;
+  //  font-family: Helvetica, sans-serif;
+  //}
+  //
+  //.anticon {
+  //  color: #005aaa !important;
+  //}
+  //
+  //::after {
+  //  color: #005aaa;
+  //}
 
   .site-layout-background {
     background: #ffffff;
@@ -121,9 +121,9 @@ const Styles = createGlobalStyle`
   //.ant-popover-inner {
   //  border: 1px solid #005aaa;
   //}
-  [class*="primary"] {
-    background: #005aaa !important;
-  }
+  //[class*="primary"] {
+  //  background: #005aaa !important;
+  //}
 
 `;
 

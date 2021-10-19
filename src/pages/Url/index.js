@@ -21,7 +21,7 @@ const ShortURL = () => {
 
     const baseURL = "https://url.vnptdongthap.com.vn/"
     const logoDefault = "img/images/logo_vnpt_2.png";
-    const [url, setUrl] = useState("");
+    const [url, setUrl] = useState(baseURL);
     const [shortUrl, setShortUrl] = useState();
     const [randomString, setRandomString] = useState();
     const [logo, setLogo] = useState(logoDefault);
@@ -30,9 +30,7 @@ const ShortURL = () => {
     const [shortChange, setShortChange] = useState(false);
     const [includeMargin, setIncludeMargin] = useState(true);
     const [qrStyle, setQrStyle] = useState('vnpt');
-    const onValuesChange = (values) => {
-        console.log(values)
-    };
+
     const downloadQR = () => {
         const canvas = document.getElementsByTagName("canvas")[0];
 
@@ -72,15 +70,14 @@ const ShortURL = () => {
     }
 
     const onFinish = (values) => {
-        getData();
-        console.log('values change:', values);
+        shortUrlAction();
+    };
+    const onValuesChange = (values) => {
         setUrl(values.url);
         setLogo(values.logo ? values.logo : logoDefault);
         setColorDefault(values.basic);
         setNoLogo(values.nologo);
-        shortUrlAction();
         setShortChange(false);
-        setIncludeMargin(values.margin);
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -184,7 +181,7 @@ const ShortURL = () => {
                         <CSS.Card2 onClick={downloadQR}>
                             <Card>
                             <QRCode
-                                value={baseURL}
+                                value={url}
                                 size={500}
                                 bgColor={"#ffffff"}
                                 fgColor={colorDefault ? "#000000" : "#005aaa"}

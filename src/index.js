@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom";
-import "antd/dist/antd.css";
-
+import "antd/dist/antd.less";
+import "./custom-theme.less"
 import Router from "./router";
 import * as serviceWorker from "./serviceWorker";
 
