@@ -1,14 +1,15 @@
-import React, {lazy} from "react";
+import React, {lazy, useContext} from "react";
 
 import {
     Route,
     Switch,
-    Redirect,
+    Redirect
 } from "react-router-dom";
 
 import Login from "./../pages/Login";
 import Photo from "./../pages/Test";
 import ShortURL from "./../pages/Url";
+import {UserContext} from "../pages/Login/auth";
 const Message = lazy(() => import("./../pages/Message"));
 const Menu = lazy(() => import("./../pages/Menu"));
 
@@ -19,32 +20,30 @@ const Home = lazy(() => import("./../pages/Home"));
 const NotFound = lazy(() => import("./../pages/NotFound"));
 const NewsType = lazy(() => import("./../pages/NewsType"));
 
-const authUser = (Component, role) => () => {
-    const user = JSON.parse(localStorage.getItem("userLogin"));
-    console.log('role', role);
-    // return user && user.role === role  ? (
-    //     <Component/>
-    // ) : (
-    //     <Redirect to="/login" />
-    // );
-    return <Component/>
+
+
+const Routes = (currentUser) => {
+    const authUser = (Component, path) => () => {
+        return <Component/>
+    };
+
+    return (
+        <Switch>
+            <Route exact path="/" component={Home}>
+                <Redirect to="/url"/>
+            </Route>
+            <Route path="/message" component={authUser(Message)}/>
+            <Route path="/menu" component={authUser(Menu, "/menu")}/>
+            <Route path="/account" component={authUser(System, 'admin')}/>
+            <Route path="/content" component={authUser(BlockContent, 'user')}/>
+            <Route path="/footer" component={authUser(Footer, 'user')}/>
+            <Route path="/news-type" component={authUser(NewsType, 'user')}/>
+            <Route path="/photo" component={Photo}/>
+            <Route path="/url" component={authUser(ShortURL, "/url")}/>
+            <Route path="*" component={NotFound}/>
+        </Switch>
+    )
 };
-const Routes = () => (
-    <Switch>
-        <Route exact path="/" component={Home}>
-            <Redirect to="/url" />
-        </Route>
-        <Route path="/login"><Login/></Route>
-        <Route path="/message" component={authUser(Message, 'user')}/>
-        <Route path="/menu" component={authUser(Menu, 'admin')}/>
-        <Route path="/account" component={authUser(System, 'admin')}/>
-        <Route path="/content" component={authUser(BlockContent, 'user')}/>
-        <Route path="/footer" component={authUser(Footer, 'user')}/>
-        <Route path="/news-type" component={authUser(NewsType, 'user')}/>
-        <Route path="/photo" component={Photo}/>
-        <Route path="/url" component={ShortURL}/>
-        <Route path="*" component={NotFound}/>
-    </Switch>
-);
+
 
 export default Routes;

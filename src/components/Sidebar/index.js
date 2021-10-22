@@ -1,10 +1,11 @@
 import * as CSS from "./styles";
 import {AppProfile} from "../../common/Profile";
 import {Layout, Menu} from "antd";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {SidebarStyle} from "./styles";
 import RandomIcon from "../../common/Utilities/RandomIcon";
 import {Link} from 'react-router-dom';
+import {UserContext} from "../../pages/Login/auth";
 
 const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu, Item} = Menu;
@@ -33,6 +34,9 @@ const Sidebar = ({id, selectedMenu, setSelectedMenu, menu}) => {
         setOpenMenu(e[e.length -1]);
     }
 
+    const { currentUser } = useContext(UserContext);
+
+    console.log("user context: ", currentUser)
 
     return (
         <SidebarStyle>
@@ -47,13 +51,13 @@ const Sidebar = ({id, selectedMenu, setSelectedMenu, menu}) => {
                 }}
             >
                 <AppProfile setSelectedMenu={setSelectedMenu}/>
-                <Menu
+                {currentUser && <Menu
                     defaultOpenKeys={[openMenu]}
                     onOpenChange={onOpenChange}
                     mode="inline">
 
                     {renderItem}
-                </Menu>
+                </Menu>}
             </Sider>
         </SidebarStyle>
     )

@@ -1,17 +1,24 @@
-import { BrowserRouter } from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.less";
-import "./custom-theme.less"
 import Router from "./router";
 import * as serviceWorker from "./serviceWorker";
+import {UserContext, UserProvider} from "./pages/Login/auth";
 
-const App = () => (
-  <BrowserRouter>
-      <Router />
-  </BrowserRouter>
-);
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Router/>
+        </BrowserRouter>
+    )
+}
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+    <UserProvider>
+        <App/>
+    </UserProvider>
+    ,
+    document.getElementById("root"));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA

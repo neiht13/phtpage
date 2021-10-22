@@ -45,6 +45,7 @@ const Input = ({ id, name, placeholder, onChange, label, errorMessage, disabled,
               alt={alt}
               min="0"
               hasError={hasError}
+              oninvalid="this.setCustomValidity('Vui lòng nhập đúng đinh dạng')"
           />
             {hasError && <CSS.ErrorMessage>{hasError}</CSS.ErrorMessage>}
         </CSS.Container>

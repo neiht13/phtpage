@@ -73,10 +73,8 @@ const ShortURL = () => {
         shortUrlAction();
     };
     const onValuesChange = (values) => {
-        setUrl(values.url);
+        setUrl(values.url || "");
         setLogo(values.logo ? values.logo : logoDefault);
-        setColorDefault(values.basic);
-        setNoLogo(values.nologo);
         setShortChange(false);
     };
 
@@ -134,13 +132,13 @@ const ShortURL = () => {
 
                             <Row justify="space-between" wrap={false}>
                                 <Form.Item name="basic" valuePropName="checked">
-                                    <CheckboxStyle><Checkbox>Màu cơ bản</Checkbox></CheckboxStyle>
+                                    <CheckboxStyle><Checkbox onChange={e => setColorDefault(!colorDefault)}>Màu cơ bản</Checkbox></CheckboxStyle>
                                 </Form.Item>
                                 <Form.Item name="nologo" valuePropName="checked">
-                                    <CheckboxStyle><Checkbox>Ẩn logo</Checkbox></CheckboxStyle>
+                                    <CheckboxStyle><Checkbox onChange={e => setNoLogo(!noLogo)}>Ẩn logo</Checkbox></CheckboxStyle>
                                 </Form.Item>
                                 <Form.Item name="margin" valuePropName="checked">
-                                    <CheckboxStyle><Checkbox checked={includeMargin} onChange={e =>setIncludeMargin(!includeMargin)}>Viền</Checkbox></CheckboxStyle>
+                                    <CheckboxStyle><Checkbox checked={includeMargin} onChange={e => setIncludeMargin(!includeMargin)}>Viền</Checkbox></CheckboxStyle>
                                 </Form.Item>
 
                             </Row>

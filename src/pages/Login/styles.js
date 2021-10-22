@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export const LoginStyle = styled.div`
   width: 40%;
   margin-left: 30%;
+  margin-top: 100px;
   .ant-input {
     padding: 6px 12px;
     border-radius: 3px;

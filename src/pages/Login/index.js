@@ -1,17 +1,17 @@
 import {Form, Checkbox, Card} from 'antd';
 import {LoginStyle} from "./styles";
-import {lazy, useEffect, useState} from "react";
+import {lazy, useContext, useEffect, useState} from "react";
 import Notification from "../../common/Form/Notification";
-import {useHistory} from "react-router-dom";
+import {Redirect, useHistory} from "react-router-dom";
 import Input from "../../common/Input";
 import firebase from "firebase/compat";
 import firebaseConfig from "../../service/firebase-config";
+import {UserContext} from "./auth";
 const Button = lazy(() => import("../../common/Button"));
 
 const Login = () => {
-    const history = useHistory();
     const [hasAccount, setHasAccount] = useState(true);
-    const [username, setUsername] = useState();
+    const [loginSuccess, setLoginSuccess] = useState(false);
     const [pwd, setPwd] = useState();
     const onValuesChange = (values) => {
         console.log('values change:', values);
@@ -19,63 +19,17 @@ const Login = () => {
         values.password && setPwd(values.password);
 
     };
-    const firebaseInstance = firebase.initializeApp(firebaseConfig)
-
-    const signUp = async (event) => {
-        event.preventDefault();
-        try {
-            if (firebaseInstance) {
-                const user = await firebaseInstance.auth().createUserWithEmailAndPassword(username, pwd)
-                console.log("user", user)
-                alert(`Welcome ${username}!`);
-            }
-        } catch (error) {
-            console.log("error", error);
-            alert(error.message);
-        }
-    };
-
-    const signIn = async (event) => {
-        event.preventDefault();
-
-        try {
-            if (firebaseInstance) {
-                const user = await firebaseInstance
-                    .auth()
-                    .signInWithEmailAndPassword(username, pwd);
-                console.log("user", user);
-                alert("Welcome back! " + username);
-            }
-        } catch (error) {
-            console.log("error", error);
-            alert(error.message);
-
-        }
-    };
-
-    const [currentUser, setCurrentUser] = useState(null);
-
-// Listen to onAuthStateChanged
-    useEffect(() => {
-        if (firebaseInstance) {
-            firebaseInstance.auth().onAuthStateChanged((authUser) => {
-                if (authUser) {
-                    setCurrentUser(authUser.email);
-                } else {
-                    setCurrentUser(null);
-                }
-            });
-        }
-    }, []);
+    const { signIn } = useContext(UserContext);
+    const { signUp } = useContext(UserContext);
 
     const onFinish = (values) => {
         console.log('Success:', values);
-        history.push("/");
-        localStorage.setItem("userLogin", JSON.stringify({
-            username: values.username,
-            role: values.remember ? 'admin' : 'user'
-        }));
-        signUp(values.username, values.password);
+
+        hasAccount
+            ?
+            signIn({email: values.username, pwd: values.password}).then(() => setLoginSuccess(true))
+            :
+            signUp({email: values.username, pwd: values.password});
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -88,14 +42,21 @@ const Login = () => {
             })
         }
     };
+    const renderLoginSuccess = () => {
+
+        return loginSuccess && <Redirect to='/'/>
+    }
 
     return (
         <LoginStyle>
+            {renderLoginSuccess()}
             <Card>
                 <Form
                     name="basic"
                     initialValues={{
                         remember: false,
+                        username: "thien@gmail.com",
+                        password: 123456,
                     }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
@@ -114,6 +75,7 @@ const Login = () => {
                             name="User"
                             id="username"
                             label="Username"
+                            type="email"
                         />
                     </Form.Item>
                     <br/>
@@ -138,13 +100,10 @@ const Login = () => {
                     <Form.Item name="remember" valuePropName="checked">
                         <Checkbox>Remember me</Checkbox>
                     </Form.Item>
-                    {hasAccount && <Form.Item>
-                        <Button onClick={signIn}>Submit</Button>
-                    </Form.Item>}
+                    <Form.Item>
+                        <Button type="submit">{hasAccount ? "Login" : "Sign Up"}</Button>
+                    </Form.Item>
                     {hasAccount && <a onClick={e => setHasAccount(hasAccount => !hasAccount)}>Don't have account?</a>}
-                    {!hasAccount && <Form.Item>
-                        <Button onClick={signUp}>Sign Up</Button>
-                    </Form.Item>}
                 </Form>
             </Card>
         </LoginStyle>
